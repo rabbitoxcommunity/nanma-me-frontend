@@ -4,10 +4,11 @@ import { FiArrowLeft, FiUpload, FiTrash2 } from "react-icons/fi";
 import { projectsApi } from "../api/endpoints";
 import { useToast } from "../components/Toast";
 import {
-  Card, PageHeader, Button, Input, Select, Textarea, FormField,
+  Card, PageHeader, Button, Input, Select, Textarea, FormField, Toggle, StickyActionBar,
 } from "../components/ui";
 import RichTextEditor from "../components/RichTextEditor";
 import Repeater from "../components/Repeater";
+import { AMENITY_ICONS, SPEC_ICONS } from "../../utils/iconCatalogs";
 
 const STATUS_OPTIONS = [
   { value: "ongoing", label: "Ongoing" },
@@ -38,12 +39,14 @@ const blankProject = {
   videoUrl: "",
   amenities: [],
   specifications: [],
+  connectivity: [],
   mapEmbed: "",
   metaTitle: "",
   metaDescription: "",
   keywords: "",
   isPublished: true,
   featured: false,
+  inBanner: false,
 };
 
 export default function ProjectForm() {
@@ -69,9 +72,13 @@ export default function ProjectForm() {
       .get(id)
       .then((p) => {
         setProject(p);
+        // Media (featuredImage / galleryImages) live in `project`, NOT in `data`.
+        // Mixing them into form state causes stale values to overwrite uploads on save.
+        // eslint-disable-next-line no-unused-vars
+        const { featuredImage, galleryImages, _id, slug, createdAt, updatedAt, createdBy, ...formFields } = p;
         setData({
           ...blankProject,
-          ...p,
+          ...formFields,
           keywords: Array.isArray(p.keywords) ? p.keywords.join(", ") : p.keywords || "",
         });
       })
@@ -88,9 +95,17 @@ export default function ProjectForm() {
     }
     setSaving(true);
     try {
+      // Defensive: never send media via JSON update — that's done via dedicated
+      // upload endpoints. Also drop empty repeater rows so Mongoose doesn't
+      // 400 on missing required `title`.
+      // eslint-disable-next-line no-unused-vars
+      const { featuredImage, galleryImages, ...formOnly } = data;
       const payload = {
-        ...data,
+        ...formOnly,
         keywords: data.keywords,
+        amenities: (data.amenities || []).filter((a) => a && a.title && a.title.trim()),
+        specifications: (data.specifications || []).filter((s) => s && s.title && s.title.trim()),
+        connectivity: (data.connectivity || []).filter((c) => c && c.label && c.label.trim()),
       };
       if (isEdit) {
         const updated = await projectsApi.update(id, payload);
@@ -151,7 +166,25 @@ export default function ProjectForm() {
     }
   };
 
-  if (loading) return <div className="text-smoke">Loading project…</div>;
+  if (loading) {
+    return (
+      <div className="space-y-6 animate-pulse">
+        <div className="h-10 w-64 bg-white rounded-xl" />
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2 space-y-6">
+            <div className="h-56 bg-white rounded-2xl" />
+            <div className="h-72 bg-white rounded-2xl" />
+            <div className="h-44 bg-white rounded-2xl" />
+          </div>
+          <div className="space-y-6">
+            <div className="h-44 bg-white rounded-2xl" />
+            <div className="h-44 bg-white rounded-2xl" />
+            <div className="h-32 bg-white rounded-2xl" />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <form onSubmit={onSave}>
@@ -177,7 +210,7 @@ export default function ProjectForm() {
         <div className="lg:col-span-2 space-y-6">
           {/* Basics */}
           <Card className="p-6 space-y-5">
-            <h2 className="font-display text-xl text-graphite">Basics</h2>
+            <h2 className="text-base font-semibold tracking-tight text-graphite">Basics</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Input
                 label="RERA Number"
@@ -225,7 +258,7 @@ export default function ProjectForm() {
 
           {/* Specs */}
           <Card className="p-6 space-y-5">
-            <h2 className="font-display text-xl text-graphite">Specifications</h2>
+            <h2 className="text-base font-semibold tracking-tight text-graphite">Specifications</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               <Input
                 label="Sq. Ft."
@@ -274,7 +307,7 @@ export default function ProjectForm() {
 
           {/* Description */}
           <Card className="p-6">
-            <h2 className="font-display text-xl text-graphite mb-4">Description</h2>
+            <h2 className="text-base font-semibold tracking-tight text-graphite mb-4">Description</h2>
             <RichTextEditor
               value={data.description}
               onChange={(v) => set("description", v)}
@@ -285,15 +318,25 @@ export default function ProjectForm() {
           {/* Repeaters */}
           <Card className="p-6 space-y-6">
             <div>
-              <h2 className="font-display text-xl text-graphite">Amenities</h2>
-              <p className="text-xs text-smoke mt-1">Use icon keys (pool, gym, spa…) or any short label.</p>
+              <h2 className="text-base font-semibold tracking-tight text-graphite">Amenities</h2>
+              <p className="text-xs text-smoke mt-1">
+                Pick an icon — the title fills in automatically. Edit the title
+                if you want a custom name (e.g. <em>20m Heated Pool</em>).
+              </p>
             </div>
             <Repeater
               value={data.amenities}
               onChange={(v) => set("amenities", v)}
               fields={[
-                { name: "icon", label: "Icon", placeholder: "pool, gym, spa…" },
-                { name: "title", label: "Title", placeholder: "Infinity Pool" },
+                {
+                  name: "icon",
+                  label: "Icon",
+                  type: "icon",
+                  catalog: AMENITY_ICONS,
+                  linkedField: "title",
+                  placeholder: "Choose icon",
+                },
+                { name: "title", label: "Title", placeholder: "Custom name (optional)" },
               ]}
               addLabel="Add Amenity"
               emptyMessage="No amenities yet — click Add Amenity."
@@ -302,25 +345,61 @@ export default function ProjectForm() {
 
           <Card className="p-6 space-y-6">
             <div>
-              <h2 className="font-display text-xl text-graphite">Specifications</h2>
-              <p className="text-xs text-smoke mt-1">Icon + title + a short description.</p>
+              <h2 className="text-base font-semibold tracking-tight text-graphite">Specifications</h2>
+              <p className="text-xs text-smoke mt-1">
+                Pick an icon — the title fills in automatically. Add a short
+                description for the spec sheet.
+              </p>
             </div>
             <Repeater
               value={data.specifications}
               onChange={(v) => set("specifications", v)}
               fields={[
-                { name: "icon", label: "Icon", placeholder: "structure" },
-                { name: "title", label: "Title", placeholder: "Structure" },
-                { name: "description", label: "Description", placeholder: "RCC framed earthquake-resistant…", type: "textarea" },
+                {
+                  name: "icon",
+                  label: "Icon",
+                  type: "icon",
+                  catalog: SPEC_ICONS,
+                  linkedField: "title",
+                  placeholder: "Choose icon",
+                },
+                { name: "title", label: "Title", placeholder: "Custom name (optional)" },
+                {
+                  name: "description",
+                  label: "Description",
+                  placeholder: "e.g. Imported Italian marble in living areas; engineered oak in bedrooms.",
+                  type: "textarea",
+                },
               ]}
               addLabel="Add Specification"
               emptyMessage="No specifications yet — click Add Specification."
             />
           </Card>
 
+          {/* Connectivity / Nearby */}
+          <Card className="p-6 space-y-6">
+            <div>
+              <h2 className="text-base font-semibold tracking-tight text-graphite">Connectivity & Nearby</h2>
+              <p className="text-xs text-smoke mt-1">
+                Cards displayed under the map on the project page. Each row shows a landmark with distance and travel time.
+              </p>
+            </div>
+            <Repeater
+              value={data.connectivity}
+              onChange={(v) => set("connectivity", v)}
+              fields={[
+                { name: "label", label: "Place", placeholder: "e.g. Airport" },
+                { name: "value", label: "Distance", placeholder: "e.g. 12 km" },
+                { name: "time", label: "Travel time", placeholder: "e.g. ~22 min" },
+              ]}
+              addLabel="Add Landmark"
+              emptyMessage="No nearby landmarks yet — click Add Landmark."
+            />
+          </Card>
+
           {/* SEO */}
           <Card className="p-6 space-y-5">
-            <h2 className="font-display text-xl text-graphite">SEO</h2>
+            <h2 className="text-base font-semibold tracking-tight text-graphite">SEO</h2>
             <Input
               label="Meta Title"
               value={data.metaTitle}
@@ -347,31 +426,31 @@ export default function ProjectForm() {
         {/* Sidebar column */}
         <div className="space-y-6">
           {/* Visibility */}
-          <Card className="p-6 space-y-3">
-            <h2 className="font-display text-lg text-graphite">Visibility</h2>
-            <label className="flex items-center gap-3 text-sm cursor-pointer">
-              <input
-                type="checkbox"
-                checked={data.isPublished}
-                onChange={(e) => set("isPublished", e.target.checked)}
-                className="w-4 h-4 accent-graphite"
-              />
-              Published (visible on site)
-            </label>
-            <label className="flex items-center gap-3 text-sm cursor-pointer">
-              <input
-                type="checkbox"
-                checked={data.featured}
-                onChange={(e) => set("featured", e.target.checked)}
-                className="w-4 h-4 accent-graphite"
-              />
-              Featured on Home page
-            </label>
+          <Card className="p-6 space-y-5">
+            <h2 className="text-sm font-semibold tracking-tight text-graphite">Visibility</h2>
+            <Toggle
+              checked={data.isPublished}
+              onChange={(v) => set("isPublished", v)}
+              label="Published"
+              hint="When off, this project is hidden from the public site."
+            />
+            <Toggle
+              checked={data.featured}
+              onChange={(v) => set("featured", v)}
+              label="Pin to Featured Projects grid"
+              hint="Promotes this project in the home-page Featured Projects section."
+            />
+            <Toggle
+              checked={data.inBanner}
+              onChange={(v) => set("inBanner", v)}
+              label="Add to home-page banner"
+              hint="Includes this project in the rotating hero banner. Recommend keeping 2–5 slides max."
+            />
           </Card>
 
           {/* Featured image */}
           <Card className="p-6">
-            <h2 className="font-display text-lg text-graphite mb-3">Featured Image</h2>
+            <h2 className="text-sm font-semibold tracking-tight text-graphite mb-3">Featured Image</h2>
             {project?.featuredImage?.url ? (
               <div className="relative aspect-video rounded overflow-hidden bg-cream mb-3">
                 <img src={project.featuredImage.url} alt="" className="w-full h-full object-cover" />
@@ -405,7 +484,7 @@ export default function ProjectForm() {
 
           {/* Gallery */}
           <Card className="p-6">
-            <h2 className="font-display text-lg text-graphite mb-3">Gallery Images</h2>
+            <h2 className="text-sm font-semibold tracking-tight text-graphite mb-3">Gallery Images</h2>
             {project?.galleryImages?.length ? (
               <div className="grid grid-cols-3 gap-2 mb-3">
                 {project.galleryImages.map((g) => (
@@ -449,7 +528,7 @@ export default function ProjectForm() {
 
           {/* Video & Map */}
           <Card className="p-6 space-y-4">
-            <h2 className="font-display text-lg text-graphite">Media & Map</h2>
+            <h2 className="text-sm font-semibold tracking-tight text-graphite">Media & Map</h2>
             <Input
               label="Apartment Video URL (YouTube)"
               value={data.videoUrl}
@@ -469,14 +548,17 @@ export default function ProjectForm() {
         </div>
       </div>
 
-      <div className="mt-8 flex justify-end gap-3">
+      <StickyActionBar>
+        <span className="text-xs text-smoke mr-auto hidden sm:inline">
+          {isEdit ? "Editing existing project" : "Creating new project — slug auto-generates from name"}
+        </span>
         <Link to="/admin/projects">
           <Button type="button" variant="ghost">Cancel</Button>
         </Link>
-        <Button type="submit" disabled={saving}>
+        <Button type="submit" loading={saving}>
           {saving ? "Saving…" : isEdit ? "Save Changes" : "Create Project"}
         </Button>
-      </div>
+      </StickyActionBar>
     </form>
   );
 }

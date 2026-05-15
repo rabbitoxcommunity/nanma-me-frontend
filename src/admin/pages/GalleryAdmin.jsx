@@ -130,7 +130,7 @@ export default function GalleryAdmin() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
         <Card className="p-5 text-center">
           <FiImage className="w-7 h-7 text-terracotta mx-auto mb-3" />
-          <h3 className="font-display text-lg text-graphite mb-3">Image Upload</h3>
+          <h3 className="text-sm font-semibold tracking-tight text-graphite mb-3">Image Upload</h3>
           <input ref={imgRef} type="file" accept="image/*" onChange={onUploadImage} className="hidden" />
           <Button
             type="button"
@@ -146,7 +146,7 @@ export default function GalleryAdmin() {
 
         <Card className="p-5 text-center">
           <FiFilm className="w-7 h-7 text-terracotta mx-auto mb-3" />
-          <h3 className="font-display text-lg text-graphite mb-3">Video Upload</h3>
+          <h3 className="text-sm font-semibold tracking-tight text-graphite mb-3">Video Upload</h3>
           <input ref={vidRef} type="file" accept="video/*" onChange={onUploadVideo} className="hidden" />
           <Button
             type="button"
@@ -162,7 +162,7 @@ export default function GalleryAdmin() {
 
         <Card className="p-5">
           <FiYoutube className="w-7 h-7 text-terracotta mx-auto mb-3 block" />
-          <h3 className="font-display text-lg text-graphite mb-3 text-center">YouTube Embed</h3>
+          <h3 className="text-sm font-semibold tracking-tight text-graphite mb-3 text-center">YouTube Embed</h3>
           <form onSubmit={onCreateYoutube} className="space-y-3">
             <input
               value={yt.title}

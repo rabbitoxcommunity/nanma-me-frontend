@@ -2,6 +2,17 @@ import { useState, useEffect } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FiMapPin } from "react-icons/fi";
+import {
+  PiAirplaneTakeoff,
+  PiGraduationCap,
+  PiFirstAid,
+  PiTrainSimple,
+  PiShoppingBag,
+  PiWaves,
+  PiTree,
+  PiBuildings,
+  PiMapPin as PiPin,
+} from "react-icons/pi";
 import SplitText from "../animations/SplitText";
 import BlurText from "../animations/BlurText";
 import TextReveal from "../animations/TextReveal";
@@ -16,6 +27,21 @@ import { ProjectCardSkeleton } from "../components/ui/Skeleton";
 import Skeleton from "../components/ui/Skeleton";
 import { amenityCatalog } from "../data/amenities";
 import { projectsService } from "../services/projectsService";
+
+// Auto-pick a relevant icon from the connectivity label so admin doesn't need
+// to choose one — falls back to a generic pin when no keyword matches.
+function pickConnectivityIcon(label = "") {
+  const l = label.toLowerCase();
+  if (/airport|flight|terminal/.test(l)) return PiAirplaneTakeoff;
+  if (/school|college|university|education/.test(l)) return PiGraduationCap;
+  if (/hospital|clinic|medical|healthcare/.test(l)) return PiFirstAid;
+  if (/metro|train|station|railway/.test(l)) return PiTrainSimple;
+  if (/mall|shop|market|retail/.test(l)) return PiShoppingBag;
+  if (/beach|sea|marine|water|lake/.test(l)) return PiWaves;
+  if (/park|garden|forest|green/.test(l)) return PiTree;
+  if (/centre|center|city|downtown|business/.test(l)) return PiBuildings;
+  return PiPin;
+}
 
 export default function ProjectDetail() {
   const { slug } = useParams();
@@ -150,7 +176,14 @@ export default function ProjectDetail() {
             </h2>
           </div>
           <div className="lg:col-span-6 lg:col-start-7">
-            <BlurText text={project.description} className="body-lg block" duration={1.2} />
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-5% 0px" }}
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+              className="prose-project body-lg"
+              dangerouslySetInnerHTML={{ __html: project.description || "" }}
+            />
             {project.overview?.length > 0 && (
               <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 border-t border-line pt-10">
                 {project.overview.map((row, i) => (
@@ -214,21 +247,30 @@ export default function ProjectDetail() {
               </h2>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 md:gap-6">
-              {project.amenities.map((key, i) => {
-                const a = amenityCatalog[key];
-                if (!a) return null;
-                const Icon = a.icon;
+              {project.amenities.map((amenity, i) => {
+                // Backend stores [{icon, title}]; older static data may still be
+                // raw strings, so handle both shapes gracefully.
+                const iconKey = typeof amenity === "string" ? amenity : amenity.icon;
+                const customTitle = typeof amenity === "string" ? null : amenity.title;
+                const cat = amenityCatalog[iconKey];
+                const Icon = cat?.icon;
+                // Prefer the admin's custom title; fall back to catalog label,
+                // then to the icon key itself if neither is set.
+                const label = customTitle || cat?.label || iconKey;
+                if (!label) return null;
                 return (
                   <motion.div
-                    key={key}
+                    key={`${iconKey}-${i}`}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-5% 0px" }}
                     transition={{ duration: 0.5, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
                     className="bg-cream rounded-sm p-6 flex flex-col items-start gap-4 hover:bg-pearl transition-colors duration-300 group"
                   >
-                    <Icon className="w-8 h-8 text-terracotta group-hover:scale-110 transition-transform duration-500" />
-                    <span className="text-sm font-medium text-graphite">{a.label}</span>
+                    {Icon && (
+                      <Icon className="w-8 h-8 text-terracotta group-hover:scale-110 transition-transform duration-500" />
+                    )}
+                    <span className="text-sm font-medium text-graphite">{label}</span>
                   </motion.div>
                 );
               })}
@@ -278,35 +320,160 @@ export default function ProjectDetail() {
       )}
 
       {/* INQUIRY + MAP */}
-      <section className="py-20 md:py-28 bg-graphite text-bone">
-        <div className="container-x grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <section className="relative py-20 md:py-28 bg-cream overflow-hidden">
+        {/* Decorative giant outline numeral */}
+        <div
+          aria-hidden
+          className="pointer-events-none select-none absolute -top-12 -right-8 lg:-right-16 font-display text-[18rem] md:text-[24rem] leading-none text-terracotta/[0.04] tracking-tightest"
+        >
+          06
+        </div>
+
+        <div className="container-x relative grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
+          {/* Location column */}
           <div className="lg:col-span-7">
-            <span className="eyebrow text-bone/50 mb-4">
-              <span className="text-terracotta editorial italic normal-case text-base">(Location)</span>
-              <span className="ml-2">On the map</span>
+            <span className="eyebrow mb-4 inline-flex items-center gap-2">
+              <span className="number-tag">(Location)</span>
+              <span>Where we are</span>
             </span>
-            <h2 className="display-3 !text-bone mt-6 mb-8">
-              {project.pinShort},
-              <br />
-              <span className="editorial text-terracotta">
-                {project.location.split(",")[1]?.trim() || ""}
-              </span>
+
+            <h2 className="display-3 mt-5 mb-8 max-w-md text-balance">
+              An address that{" "}
+              <span className="editorial text-terracotta">measures up.</span>
             </h2>
-            {project.mapEmbed && (
-              <div className="aspect-[4/3] md:aspect-[16/10] overflow-hidden rounded-sm bg-bone/5">
-                <iframe
-                  src={project.mapEmbed}
-                  title={`${project.title} location`}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="w-full h-full"
-                  allowFullScreen
-                />
+
+            {/* ─── Unified Location Panel ──────────────── */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-5% 0px" }}
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+              className="relative bg-white rounded-3xl shadow-2xl shadow-graphite/10 ring-1 ring-line overflow-hidden"
+            >
+              {/* Top accent bar */}
+              <div className="h-1 bg-gradient-to-r from-terracotta via-terracotta/70 to-transparent" />
+
+              {/* Address strip */}
+              <div className="px-6 md:px-8 py-5 flex items-start gap-4 border-b border-line bg-cream/30">
+                <span className="w-11 h-11 rounded-2xl bg-terracotta flex items-center justify-center shrink-0 shadow-md shadow-terracotta/30">
+                  <FiMapPin className="w-5 h-5 text-bone" />
+                </span>
+                <div className="min-w-0 flex-1">
+                  <div className="text-[10px] font-semibold uppercase tracking-widest text-smoke mb-1">
+                    Address
+                  </div>
+                  <div className="font-display text-lg md:text-xl text-graphite leading-tight tracking-tighter2">
+                    {project.location}
+                  </div>
+                </div>
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(project.location)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cursor="hover"
+                  className="hidden sm:inline-flex shrink-0 items-center gap-2 bg-graphite text-bone text-xs font-medium px-4 py-2.5 rounded-full hover:bg-terracotta hover:gap-3 transition-all duration-300 self-center"
+                >
+                  Directions <span aria-hidden>→</span>
+                </a>
               </div>
-            )}
+
+              {/* Connectivity rail — divided columns */}
+              {project.connectivity?.length > 0 && (
+                <div
+                  className={`grid divide-y sm:divide-y-0 sm:divide-x divide-line border-b border-line ${
+                    project.connectivity.length === 1
+                      ? "grid-cols-1"
+                      : project.connectivity.length === 2
+                      ? "grid-cols-1 sm:grid-cols-2"
+                      : "grid-cols-1 sm:grid-cols-3"
+                  }`}
+                >
+                  {project.connectivity.map((l, i) => {
+                    const Icon = pickConnectivityIcon(l.label);
+                    return (
+                      <motion.div
+                        key={`${l.label}-${i}`}
+                        initial={{ opacity: 0, y: 8 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.05 + i * 0.08, duration: 0.5 }}
+                        className="group relative px-5 md:px-6 py-6 hover:bg-cream/40 transition-colors"
+                      >
+                        {/* Index */}
+                        <span className="absolute top-3 right-3 text-[10px] font-semibold tracking-widest text-ash">
+                          0{i + 1}
+                        </span>
+
+                        <span className="inline-flex items-center justify-center w-10 h-10 rounded-2xl bg-terracotta/10 text-terracotta mb-4 group-hover:bg-terracotta group-hover:text-bone transition-colors duration-300">
+                          <Icon className="w-5 h-5" />
+                        </span>
+
+                        <div className="text-[10px] font-semibold uppercase tracking-widest text-smoke mb-1.5 truncate">
+                          {l.label}
+                        </div>
+                        {l.value && (
+                          <div className="font-display text-2xl md:text-3xl text-graphite leading-none tracking-tighter2">
+                            {l.value}
+                          </div>
+                        )}
+                        {l.time && (
+                          <div className="text-[11px] text-ash mt-2 font-medium">
+                            {l.time}
+                          </div>
+                        )}
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              )}
+
+              {/* Map */}
+              {project.mapEmbed ? (
+                <div className="relative group">
+                  <div className="aspect-[16/10] md:aspect-[16/8] overflow-hidden">
+                    <iframe
+                      src={project.mapEmbed}
+                      title={`${project.title} location`}
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      className="w-full h-full grayscale-[0.25] contrast-[0.97] group-hover:grayscale-0 transition-all duration-700"
+                      allowFullScreen
+                    />
+                  </div>
+
+                  {/* Floating pin chip — top left of the map */}
+                  <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md rounded-full pl-1.5 pr-4 py-1.5 flex items-center gap-2.5 shadow-lg shadow-graphite/15 ring-1 ring-line">
+                    <span className="w-7 h-7 rounded-full bg-terracotta flex items-center justify-center shadow-sm shadow-terracotta/40">
+                      <FiMapPin className="w-3.5 h-3.5 text-bone" />
+                    </span>
+                    <span className="text-[11px] font-medium text-graphite truncate max-w-[14ch]">
+                      {project.title}
+                    </span>
+                  </div>
+
+                  {/* Get-directions on small screens (hidden on larger because address strip has it) */}
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(project.location)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-cursor="hover"
+                    className="sm:hidden absolute bottom-4 right-4 inline-flex items-center gap-2 bg-graphite text-bone text-xs font-medium px-4 py-2.5 rounded-full shadow-lg hover:bg-terracotta transition-all duration-300"
+                  >
+                    Directions <span aria-hidden>→</span>
+                  </a>
+                </div>
+              ) : (
+                <div className="aspect-[16/10] flex flex-col items-center justify-center gap-3 bg-cream/40 text-smoke">
+                  <FiMapPin className="w-7 h-7" />
+                  <span className="text-xs uppercase tracking-widest">Map coming soon</span>
+                </div>
+              )}
+            </motion.div>
           </div>
+
+          {/* Inquiry form column */}
           <div className="lg:col-span-5">
-            <InquiryForm projectTitle={project.title} />
+            <InquiryForm projectTitle={project.title} projectId={project.id} />
           </div>
         </div>
       </section>

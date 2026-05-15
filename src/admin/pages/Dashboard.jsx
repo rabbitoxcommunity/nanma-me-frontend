@@ -63,7 +63,7 @@ function KpiCard({ Icon, label, value, sublabel, badge, to, accent }) {
         )}
       </div>
 
-      <div className="font-display text-4xl font-light text-graphite leading-none tabular-nums">
+      <div className="text-4xl font-semibold tracking-tight text-graphite leading-none tabular-nums">
         {value ?? "—"}
       </div>
       <div className="text-xs font-semibold uppercase tracking-ultrawide text-smoke mt-3">{label}</div>
@@ -126,7 +126,7 @@ export default function Dashboard() {
             <p className="text-xs text-smoke">
               {new Date().toLocaleDateString("en-IN", { weekday: "long", day: "numeric", month: "long" })}
             </p>
-            <h1 className="font-display text-xl text-graphite font-light mt-0.5">
+            <h1 className="text-xl text-graphite font-semibold tracking-tight mt-0.5">
               {greeting()}, <span className="text-terracotta">{firstName}</span>.
             </h1>
           </div>
@@ -174,7 +174,7 @@ export default function Dashboard() {
         <div className="lg:col-span-3 bg-white rounded-2xl p-6 shadow-[0_1px_4px_rgba(26,24,21,0.06),0_4px_16px_rgba(26,24,21,0.04)]">
           <div className="flex items-center justify-between mb-7">
             <div>
-              <h2 className="font-display text-xl text-graphite">Projects overview</h2>
+              <h2 className="text-base font-semibold tracking-tight text-graphite">Projects overview</h2>
               <p className="text-xs text-smoke mt-0.5">{total} total projects across all categories</p>
             </div>
             <Link
@@ -200,7 +200,7 @@ export default function Dashboard() {
                       <span className="text-sm text-graphite font-medium">{label}</span>
                       <div className="flex items-center gap-2">
                         <span className="text-xs text-smoke">{pct}%</span>
-                        <span className="font-display text-xl text-graphite leading-none tabular-nums w-6 text-right">{count}</span>
+                        <span className="text-xl font-semibold tracking-tight text-graphite leading-none tabular-nums w-6 text-right">{count}</span>
                       </div>
                     </div>
                     <div className="h-2 bg-[rgba(26,24,21,0.06)] rounded-full overflow-hidden">
@@ -220,7 +220,7 @@ export default function Dashboard() {
         <div className="lg:col-span-2 bg-white rounded-2xl p-6 shadow-[0_1px_4px_rgba(26,24,21,0.06),0_4px_16px_rgba(26,24,21,0.04)]">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h2 className="font-display text-xl text-graphite">Enquiries</h2>
+              <h2 className="text-base font-semibold tracking-tight text-graphite">Enquiries</h2>
               <p className="text-xs text-smoke mt-0.5">Recent submissions</p>
             </div>
             <Link

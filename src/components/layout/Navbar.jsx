@@ -17,6 +17,10 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === "/";
+  // Pages that open with a full-bleed dark hero — navbar text starts white,
+  // flips to dark once user scrolls past the hero (frosted bone bg kicks in).
+  const isProjectDetail = /^\/projects\/.+/.test(location.pathname);
+  const hasDarkHero = isHome || isProjectDetail;
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 40);
@@ -34,7 +38,7 @@ export default function Navbar() {
     document.body.style.overflow = open ? "hidden" : "";
   }, [open]);
 
-  const dark = isHome && !scrolled;
+  const dark = hasDarkHero && !scrolled;
 
   return (
     <>

@@ -5,7 +5,7 @@ import Counter from "../../animations/Counter";
 const stats = [
   { value: 18, label: "Years in Practice", suffix: "+" },
   { value: 42, label: "Projects Delivered", suffix: "" },
-  { value: 4200, label: "Crores Transacted", prefix: "₹", suffix: " Cr" },
+  { value: 4.2, label: "Crores Transacted", prefix: "₹", suffix: " Cr" },
   { value: 98, label: "Client Retention", suffix: "%" },
 ];
 

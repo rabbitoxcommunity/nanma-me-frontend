@@ -41,18 +41,21 @@ export default function AdminLayout() {
     .toUpperCase();
 
   return (
-    <div className="min-h-screen bg-[#F5F5F7] flex text-graphite">
+    <div className="admin-shell min-h-screen bg-[#F5F5F7] flex text-graphite">
       {/* Mobile top bar */}
-      <header className="lg:hidden fixed top-0 inset-x-0 flex items-center justify-between bg-white border-b border-[rgba(26,24,21,0.08)] px-4 py-3.5 z-40">
+      <header className="lg:hidden fixed top-0 inset-x-0 flex items-center justify-between bg-white/90 backdrop-blur-md border-b border-[rgba(26,24,21,0.08)] px-4 py-3 z-40">
         <div className="flex items-center gap-2.5">
-          <div className="w-7 h-7 rounded-lg bg-terracotta flex items-center justify-center">
-            <span className="font-display text-white text-xs font-bold leading-none">N</span>
+          <div className="w-8 h-8 rounded-xl bg-terracotta flex items-center justify-center shadow-sm shadow-terracotta/30">
+            <span className="text-white text-xs font-bold leading-none">N</span>
           </div>
-          <span className="font-display text-graphite text-base">Nanma</span>
+          <div className="leading-none">
+            <div className="text-sm font-semibold tracking-tight text-graphite">Nanma</div>
+            <div className="text-[9px] uppercase tracking-[0.2em] text-ash mt-0.5">Admin</div>
+          </div>
         </div>
         <button
           onClick={() => setOpen(!open)}
-          className="w-9 h-9 flex items-center justify-center text-smoke hover:text-graphite transition-colors"
+          className="w-9 h-9 flex items-center justify-center rounded-lg text-smoke hover:text-graphite hover:bg-[rgba(26,24,21,0.04)] transition-colors"
           aria-label="Toggle menu"
         >
           {open ? <FiX className="w-5 h-5" /> : <FiMenu className="w-5 h-5" />}
@@ -67,12 +70,12 @@ export default function AdminLayout() {
       >
         {/* Brand */}
         <div className="hidden lg:flex items-center gap-3 px-5 py-5 border-b border-[rgba(26,24,21,0.07)]">
-          <div className="w-8 h-8 rounded-xl bg-terracotta flex items-center justify-center shrink-0">
-            <span className="font-display text-white text-sm font-bold leading-none">N</span>
+          <div className="w-9 h-9 rounded-xl bg-terracotta flex items-center justify-center shrink-0 shadow-sm shadow-terracotta/30">
+            <span className="text-white text-sm font-bold leading-none">N</span>
           </div>
-          <div>
-            <div className="font-display text-graphite text-sm font-medium leading-none">Nanma Estates</div>
-            <div className="text-[10px] text-smoke mt-0.5">Admin Panel</div>
+          <div className="min-w-0">
+            <div className="text-sm font-semibold tracking-tight text-graphite leading-tight">Nanma Estates</div>
+            <div className="text-[10px] text-ash mt-0.5 uppercase tracking-[0.18em]">Admin Console</div>
           </div>
         </div>
 
@@ -93,7 +96,7 @@ export default function AdminLayout() {
                     end={end}
                     onClick={() => setOpen(false)}
                     className={({ isActive }) =>
-                      `flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150 ${
+                      `relative flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150 ${
                         isActive
                           ? "bg-terracotta/10 text-terracotta"
                           : "text-smoke hover:text-graphite hover:bg-[rgba(26,24,21,0.04)]"
@@ -102,6 +105,9 @@ export default function AdminLayout() {
                   >
                     {({ isActive }) => (
                       <>
+                        {isActive && (
+                          <span className="absolute left-0 top-1.5 bottom-1.5 w-0.5 rounded-full bg-terracotta" />
+                        )}
                         <Icon className={`w-4 h-4 shrink-0 ${isActive ? "text-terracotta" : ""}`} />
                         {label}
                       </>
@@ -156,7 +162,7 @@ export default function AdminLayout() {
 
       {/* Main */}
       <main className="flex-1 min-w-0 pt-14 lg:pt-0 overflow-x-hidden">
-        <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-10 py-8 lg:py-10">
+        <div className=" px-5 sm:px-8 lg:px-10 py-8 lg:py-10">
           <Outlet />
         </div>
       </main>

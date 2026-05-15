@@ -1,25 +1,10 @@
-import {
-  PiSwimmingPool,
-  PiBarbell,
-  PiFlower,
-  PiBaby,
-  PiCouch,
-  PiBriefcase,
-  PiShieldCheck,
-  PiCar,
-  PiBellRinging,
-  PiSparkle,
-} from "react-icons/pi";
+// Re-export from the shared catalog so admin picker keys + public renderers
+// stay in lockstep. Add new amenities in src/utils/iconCatalogs.js.
+import { AMENITY_ICONS } from "../utils/iconCatalogs";
 
-export const amenityCatalog = {
-  pool: { label: "Infinity Pool", icon: PiSwimmingPool },
-  gym: { label: "Wellness & Gym", icon: PiBarbell },
-  spa: { label: "Spa & Sauna", icon: PiSparkle },
-  garden: { label: "Landscaped Gardens", icon: PiFlower },
-  kids: { label: "Children's Play", icon: PiBaby },
-  lounge: { label: "Resident Lounge", icon: PiCouch },
-  business: { label: "Business Suite", icon: PiBriefcase },
-  security: { label: "24×7 Security", icon: PiShieldCheck },
-  parking: { label: "Valet Parking", icon: PiCar },
-  concierge: { label: "Concierge Service", icon: PiBellRinging },
-};
+export const amenityCatalog = Object.fromEntries(
+  Object.entries(AMENITY_ICONS).map(([key, { Icon, label }]) => [
+    key,
+    { label, icon: Icon },
+  ])
+);

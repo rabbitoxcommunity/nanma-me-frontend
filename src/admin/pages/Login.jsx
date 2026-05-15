@@ -32,7 +32,7 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex bg-[#F5F5F7]">
+    <div className="admin-shell min-h-screen flex bg-[#F5F5F7]">
       {/* Left decorative panel */}
       <div className="hidden lg:flex flex-col justify-between w-[42%] bg-white border-r border-[rgba(26,24,21,0.07)] p-12 relative overflow-hidden shrink-0">
         {/* Background shapes */}
@@ -42,9 +42,9 @@ export default function Login() {
         {/* Brand */}
         <div className="relative z-10 flex items-center gap-3">
           <div className="w-9 h-9 rounded-xl bg-terracotta flex items-center justify-center">
-            <span className="font-display text-white font-bold">N</span>
+            <span className="text-white font-bold">N</span>
           </div>
-          <span className="font-display text-graphite text-xl">Nanma Estates</span>
+          <span className="text-graphite text-lg font-semibold tracking-tight">Nanma Estates</span>
         </div>
 
         {/* Illustration area */}
@@ -52,7 +52,7 @@ export default function Login() {
           {/* Mini stat cards */}
           <div className="bg-[#F5F5F7] rounded-2xl p-5">
             <div className="text-xs font-semibold uppercase tracking-ultrawide text-smoke mb-1">Total Projects</div>
-            <div className="font-display text-4xl text-graphite font-light">12</div>
+            <div className="text-4xl text-graphite font-semibold tracking-tight tabular">12</div>
             <div className="flex items-center gap-1.5 mt-3">
               <div className="flex-1 h-1.5 bg-white rounded-full overflow-hidden">
                 <div className="h-full w-3/4 bg-terracotta rounded-full" />
@@ -63,11 +63,11 @@ export default function Login() {
           <div className="grid grid-cols-2 gap-3">
             <div className="bg-terracotta/8 rounded-2xl p-4">
               <div className="text-[10px] font-semibold uppercase tracking-ultrawide text-smoke mb-1">Gallery</div>
-              <div className="font-display text-2xl text-graphite font-light">48</div>
+              <div className="text-2xl text-graphite font-semibold tracking-tight tabular">48</div>
             </div>
             <div className="bg-emerald-50 rounded-2xl p-4">
               <div className="text-[10px] font-semibold uppercase tracking-ultrawide text-smoke mb-1">Enquiries</div>
-              <div className="font-display text-2xl text-graphite font-light">24</div>
+              <div className="text-2xl text-graphite font-semibold tracking-tight tabular">24</div>
             </div>
           </div>
         </div>
@@ -86,12 +86,12 @@ export default function Login() {
           {/* Mobile brand */}
           <div className="flex items-center gap-3 mb-8 lg:hidden">
             <div className="w-9 h-9 rounded-xl bg-terracotta flex items-center justify-center">
-              <span className="font-display text-white font-bold">N</span>
+              <span className="text-white font-bold">N</span>
             </div>
-            <span className="font-display text-graphite text-xl">Nanma Estates</span>
+            <span className="text-graphite text-lg font-semibold tracking-tight">Nanma Estates</span>
           </div>
 
-          <h1 className="font-display text-3xl text-graphite font-light mb-1">Welcome back</h1>
+          <h1 className="text-[28px] text-graphite font-semibold tracking-tight mb-1.5 leading-tight">Welcome back</h1>
           <p className="text-sm text-smoke mb-8">Sign in to manage your portfolio.</p>
 
           <form onSubmit={onSubmit} className="space-y-4">

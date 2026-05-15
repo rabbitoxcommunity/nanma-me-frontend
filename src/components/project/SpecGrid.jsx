@@ -1,27 +1,12 @@
 import { motion } from "framer-motion";
-import {
-  PiBuildings,
-  PiCookingPot,
-  PiSquaresFour,
-  PiBathtub,
-  PiDoor,
-  PiCpu,
-} from "react-icons/pi";
-
-const iconMap = {
-  structure: PiBuildings,
-  kitchen: PiCookingPot,
-  flooring: PiSquaresFour,
-  bath: PiBathtub,
-  doors: PiDoor,
-  tech: PiCpu,
-};
+import { PiBuildings } from "react-icons/pi";
+import { SPEC_ICONS } from "../../utils/iconCatalogs";
 
 export default function SpecGrid({ specifications = [] }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-line">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px ">
       {specifications.map((spec, i) => {
-        const Icon = iconMap[spec.icon] || PiBuildings;
+        const Icon = SPEC_ICONS[spec.icon]?.Icon || PiBuildings;
         return (
           <motion.div
             key={spec.title}

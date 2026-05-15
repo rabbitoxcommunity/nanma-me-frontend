@@ -59,14 +59,14 @@ export function adaptProject(p) {
     videoUrl: p.videoUrl || "",
     mapEmbed: p.mapEmbed || "",
 
-    // Amenities — backend stores [{icon, title}], pages render via icon key
-    amenities: (p.amenities || [])
-      .map((a) => a.icon || a.title?.toLowerCase().replace(/\s+/g, ""))
-      .filter(Boolean),
-    // Also keep raw form for richer rendering
-    amenitiesFull: p.amenities || [],
+    // Amenities — keep full {icon, title} objects so the user's custom title
+    // (e.g. "Verum Pool") is preserved on the public site.
+    amenities: (p.amenities || []).filter((a) => a && (a.icon || a.title)),
 
     specifications: p.specifications || [],
+
+    // Connectivity / Nearby cards under the map (admin-editable)
+    connectivity: p.connectivity || [],
 
     // Overview rows (rendered in ProjectDetail)
     overview: [

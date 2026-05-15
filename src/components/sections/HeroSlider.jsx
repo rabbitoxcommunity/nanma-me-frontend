@@ -4,14 +4,19 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import SplitText from "../../animations/SplitText";
 import BlurText from "../../animations/BlurText";
 import TextReveal from "../../animations/TextReveal";
+import { projectsApi } from "../../admin/api/endpoints";
 
-const slides = [
+// Hardcoded fallback slides — used while loading and when no banner-flagged
+// projects exist in the CMS.
+const FALLBACK_SLIDES = [
   {
     img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=2200&q=85",
     label: "Now Selling",
     location: "Marine Drive, Mumbai",
     title: "Azure Skyline",
     sub: "Residences",
+    tagline:
+      "A small portfolio of architecturally significant homes — designed, built, and delivered by us alone.",
     slug: "azure-skyline-residences",
   },
   {
@@ -20,6 +25,8 @@ const slides = [
     location: "Lonavala, Maharashtra",
     title: "Verdant Villas",
     sub: "by the Lake",
+    tagline:
+      "Forty-two private villas around a quiet lake. Restored woodland, walled gardens, and infinity pools that meet the water beyond.",
     slug: "verdant-villas-by-the-lake",
   },
   {
@@ -28,13 +35,65 @@ const slides = [
     location: "Whitefield, Bangalore",
     title: "The Grove",
     sub: "Residences",
+    tagline:
+      "Twelve garden homes set within a walled four-acre estate — pre-launch enquiries now open to a small list.",
     slug: "the-grove-residences",
   },
 ];
 
+const STATUS_LABELS = {
+  ongoing: "Ongoing",
+  ready: "Ready to Move In",
+  completed: "Completed",
+  upcoming: "Upcoming",
+};
+
+const PLACEHOLDER_IMG =
+  "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=2200&q=85";
+
+// Convert a backend Project doc into the shape this slider renders
+function adaptToSlide(p) {
+  const img =
+    p.featuredImage?.url || p.galleryImages?.[0]?.url || PLACEHOLDER_IMG;
+  // Smart split: use full name as title; place property type / a single
+  // descriptor on the italic terracotta sub-line for editorial feel.
+  const sub = p.propertyType || STATUS_LABELS[p.status] || "";
+  return {
+    img,
+    label: STATUS_LABELS[p.status] || "Featured",
+    location: p.location || "",
+    title: p.name,
+    sub,
+    // Subtitle paragraph — pulled from project's tagline (admin-edited)
+    tagline: p.tagline || "",
+    slug: p.slug,
+  };
+}
+
 export default function HeroSlider() {
+  const [slides, setSlides] = useState(FALLBACK_SLIDES);
   const [current, setCurrent] = useState(0);
   const ref = useRef(null);
+
+  // Pull banner-flagged projects from API; gracefully fall back to defaults.
+  useEffect(() => {
+    let alive = true;
+    projectsApi
+      .publicList({ banner: true, limit: 5 })
+      .then(({ items = [] }) => {
+        if (!alive) return;
+        if (items.length) {
+          setSlides(items.map(adaptToSlide));
+          setCurrent(0);
+        }
+      })
+      .catch(() => {
+        // network error → keep fallback
+      });
+    return () => {
+      alive = false;
+    };
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -45,9 +104,10 @@ export default function HeroSlider() {
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
   useEffect(() => {
+    if (slides.length <= 1) return;
     const t = setInterval(() => setCurrent((c) => (c + 1) % slides.length), 7000);
     return () => clearInterval(t);
-  }, []);
+  }, [slides.length]);
 
   return (
     <section ref={ref} className="relative h-screen min-h-[680px] w-full overflow-hidden">
@@ -110,14 +170,16 @@ export default function HeroSlider() {
                 </div>
               </h1>
 
-              <div className="pt-4 max-w-xl">
-                <BlurText
-                  text="A small portfolio of architecturally significant homes — designed, built, and delivered by us alone."
-                  delay={0.6}
-                  duration={1.2}
-                  className="text-base md:text-lg text-bone/80"
-                />
-              </div>
+              {slides[current].tagline && (
+                <div className="pt-4 max-w-xl">
+                  <BlurText
+                    text={slides[current].tagline}
+                    delay={0.6}
+                    duration={1.2}
+                    className="text-base md:text-lg text-bone/80"
+                  />
+                </div>
+              )}
 
               <div className="flex flex-wrap gap-3 pt-2">
                 <Link
@@ -160,7 +222,7 @@ export default function HeroSlider() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-6 left-5 sm:left-8 md:left-12 lg:left-16 z-10 flex flex-col items-start gap-2 text-bone/60"
+        className="absolute bottom-6 right-5 sm:right-8 md:right-12 lg:right-16 z-10 flex flex-col items-end gap-2 text-bone/60"
       >
         <span className="text-[10px] uppercase tracking-ultrawide">Scroll</span>
         <motion.div

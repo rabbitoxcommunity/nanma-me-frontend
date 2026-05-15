@@ -31,6 +31,21 @@
     .cursor-custom * { cursor: none; }
   }
 
+  /* Admin shell — Inter only, regardless of any Fraunces classes used downstream.
+     Also enables tabular numerals + ss01 / cv11 for cleaner UI numbers. */
+  .admin-shell,
+  .admin-shell * {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  }
+  .admin-shell {
+    font-feature-settings: "ss01", "cv11", "tnum";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .admin-shell .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
   ::selection {
     background-color: #1a1815;
     color: #f5f1e8;
@@ -100,6 +115,33 @@
   .body {
     @apply text-sm md:text-base text-smoke leading-relaxed;
   }
+
+  /* Rich-text output from the project description editor.
+     Targets the HTML produced by react-quill (h2, h3, p, ul, ol, blockquote, a). */
+  .prose-project {
+    @apply text-smoke leading-relaxed;
+  }
+  .prose-project p { @apply mb-4; }
+  .prose-project h2 {
+    @apply font-display text-2xl md:text-3xl font-light tracking-tighter2 text-graphite mt-8 mb-3;
+  }
+  .prose-project h3 {
+    @apply font-display text-xl md:text-2xl font-light tracking-tighter2 text-graphite mt-7 mb-2;
+  }
+  .prose-project strong { @apply text-graphite font-medium; }
+  .prose-project em { @apply font-editorial italic text-terracotta not-italic; font-style: italic; }
+  .prose-project u { @apply underline decoration-terracotta/40 underline-offset-2; }
+  .prose-project a {
+    @apply text-terracotta underline decoration-terracotta/40 underline-offset-4 hover:decoration-terracotta transition-colors;
+  }
+  .prose-project ul { @apply list-disc pl-5 mb-4 space-y-1.5; }
+  .prose-project ol { @apply list-decimal pl-5 mb-4 space-y-1.5; }
+  .prose-project li { @apply text-smoke; }
+  .prose-project blockquote {
+    @apply border-l-2 border-terracotta pl-5 italic text-graphite my-6 font-editorial text-lg md:text-xl;
+  }
+  .prose-project > *:first-child { @apply mt-0; }
+  .prose-project > *:last-child { @apply mb-0; }
 
   /* Layout helpers */
   .container-x {
