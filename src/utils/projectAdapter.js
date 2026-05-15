@@ -1,0 +1,97 @@
+/**
+ * Maps a backend Project document into the shape the public-site components
+ * already expect (so we don't have to rewrite every card / detail section).
+ */
+
+export const STATUS_LABELS = {
+  ongoing: "Ongoing",
+  ready: "Ready to Move In",
+  completed: "Completed",
+  upcoming: "Upcoming",
+};
+
+export const PROJECT_STATUSES = [
+  { key: "all", label: "All Projects" },
+  { key: "ongoing", label: "Ongoing" },
+  { key: "ready", label: "Ready to Move In" },
+  { key: "completed", label: "Completed" },
+  { key: "upcoming", label: "Upcoming" },
+];
+
+const PLACEHOLDER =
+  "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&q=80";
+
+export function adaptProject(p) {
+  if (!p) return null;
+  const cover = p.featuredImage?.url || p.galleryImages?.[0]?.url || PLACEHOLDER;
+  const gallery = (p.galleryImages || []).map((g) => g.url).filter(Boolean);
+  // Fall back to cover so detail page hero always has at least one image
+  const galleryWithFallback = gallery.length ? gallery : [cover];
+  const pinShort = (p.location || "").split(",")[0]?.trim() || "";
+
+  return {
+    id: p._id,
+    slug: p.slug,
+    title: p.name,
+    tagline: p.tagline || "",
+    location: p.location || "",
+    pinShort,
+
+    // Status / type
+    status: p.status,
+    statusLabel: STATUS_LABELS[p.status] || p.status,
+    type: p.propertyType || "Project",
+    tag: p.propertyType || "Project",
+
+    // Display strings used by ProjectCard
+    units: p.bhk || p.units || "—",
+    sizeRange: p.sqft || "",
+    priceFrom: p.priceFrom || "",
+    handover: p.handover || "",
+
+    // Detail page hero / gallery
+    cover,
+    thumb: cover,
+    gallery: galleryWithFallback,
+
+    // Body
+    description: p.description || "",
+    videoUrl: p.videoUrl || "",
+    mapEmbed: p.mapEmbed || "",
+
+    // Amenities — backend stores [{icon, title}], pages render via icon key
+    amenities: (p.amenities || [])
+      .map((a) => a.icon || a.title?.toLowerCase().replace(/\s+/g, ""))
+      .filter(Boolean),
+    // Also keep raw form for richer rendering
+    amenitiesFull: p.amenities || [],
+
+    specifications: p.specifications || [],
+
+    // Overview rows (rendered in ProjectDetail)
+    overview: [
+      p.developmentSize && { label: "Development Size", value: p.developmentSize },
+      p.floor && { label: "Floor / Tower", value: p.floor },
+      p.units && { label: "Total Units", value: p.units },
+      p.bhk && { label: "Configuration", value: p.bhk },
+      p.handover && { label: "Possession", value: p.handover },
+      p.reraNumber && { label: "RERA No.", value: p.reraNumber },
+    ].filter(Boolean),
+
+    // Spec strip on detail page (legacy field names kept for compatibility)
+    bhk: p.bhk || "—",
+    sqft: p.sqft || "—",
+    propertyType: p.propertyType || "—",
+
+    // SEO
+    metaTitle: p.metaTitle || `${p.name} — Nanma Estates`,
+    metaDescription:
+      p.metaDescription ||
+      (p.tagline ? `${p.tagline} — ${p.location}` : p.name),
+    keywords: p.keywords || [],
+  };
+}
+
+export function adaptProjects(items = []) {
+  return items.map(adaptProject).filter(Boolean);
+}
