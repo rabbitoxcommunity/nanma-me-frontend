@@ -6,6 +6,7 @@ import {
 import { enquiriesApi } from "../api/endpoints";
 import { PageHeader, Button, Select, EmptyState, StatusPill } from "../components/ui";
 import { useToast } from "../components/Toast";
+import { useConfirm } from "../components/ConfirmDialog";
 
 const STATUSES = [
   { value: "all", label: "All" },
@@ -29,6 +30,7 @@ function Avatar({ name }) {
 
 export default function EnquiriesAdmin() {
   const toast = useToast();
+  const confirm = useConfirm();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [status, setStatus] = useState("all");
@@ -57,7 +59,13 @@ export default function EnquiriesAdmin() {
   };
 
   const onDelete = async (e) => {
-    if (!window.confirm(`Delete enquiry from ${e.name}?`)) return;
+    const ok = await confirm({
+      title: `Delete enquiry from ${e.name}?`,
+      message: "The full conversation will be removed permanently.",
+      confirmLabel: "Delete enquiry",
+      danger: true,
+    });
+    if (!ok) return;
     try {
       await enquiriesApi.remove(e._id);
       setItems((prev) => prev.filter((x) => x._id !== e._id));

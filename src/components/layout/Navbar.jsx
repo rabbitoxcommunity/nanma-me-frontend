@@ -15,6 +15,7 @@ const links = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
   const location = useLocation();
   const isHome = location.pathname === "/";
   // Pages that open with a full-bleed dark hero — navbar text starts white,
@@ -30,6 +31,12 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
+    const fn = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", fn, { passive: true });
+    return () => window.removeEventListener("resize", fn);
+  }, []);
+
+  useEffect(() => {
     setOpen(false);
     window.scrollTo({ top: 0 });
   }, [location.pathname]);
@@ -39,28 +46,40 @@ export default function Navbar() {
   }, [open]);
 
   const dark = hasDarkHero && !scrolled;
+  const logoGrey = scrolled || !hasDarkHero;
 
   return (
     <>
       <motion.header
-        initial={{ y: -60, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 inset-x-0 z-40 transition-all duration-500 ${
           scrolled
-            ? "bg-bone/85 backdrop-blur-xl border-b border-line"
+            ? "bg-bone/85 backdrop-blur-xl"
             : "bg-transparent"
         }`}
       >
         <div className="container-x">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between">
             <Link
               to="/"
               data-cursor="hover"
               aria-label="Nanma by Meeran — Home"
               className={`transition-colors ${dark ? "text-bone" : "text-graphite"}`}
             >
-              <Logo showTagline />
+              <motion.div
+                initial={false}
+                animate={{
+                  width: scrolled ? (isMobile ? 100 : 80) : (isMobile ? 130 : 170),
+                  height: scrolled ? (isMobile ? 80 : 80) : (isMobile ? 100 : 160),
+                }}
+                transition={{ type: "spring", stiffness: 80, damping: 18, mass: 1 }}
+                className="overflow-hidden"
+              >
+                <Logo
+                  showTagline
+                  markClass="object-contain w-full h-full"
+                  markStyle={{ filter: logoGrey ? "brightness(0) saturate(0) invert(50%)" : "none", transition: "filter 0.5s ease" }}
+                />
+              </motion.div>
             </Link>
 
             <nav className="hidden lg:flex items-center gap-1">

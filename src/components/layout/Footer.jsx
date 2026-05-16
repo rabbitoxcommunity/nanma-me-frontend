@@ -59,8 +59,8 @@ export default function Footer() {
       {/* Links */}
       <div className="container-x py-16 grid grid-cols-2 md:grid-cols-12 gap-8">
         <div className="col-span-2 md:col-span-4">
-          <div className="text-bone mb-5">
-            <Logo showTagline taglineClass="text-bone/50" />
+          <div className="text-bone">
+            <Logo showTagline taglineClass="text-bone/50" markClass="w-[150px] h-[140px] object-contain"  className="w-15 h-15" />
           </div>
           <p className="text-bone/60 text-sm max-w-xs leading-relaxed mb-6">
             Crafted living, built to endure. Limited-edition residential projects across India's most coveted addresses.
@@ -110,7 +110,7 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-3">
               <FiMail className="w-4 h-4 text-terracotta shrink-0" />
-              <a href="mailto:hello@nanmaestates.com" data-cursor="hover" className="hover:text-terracotta transition-colors">hello@nanmaestates.com</a>
+              <a href="mailto:hello@nanmaconstruct.com" data-cursor="hover" className="hover:text-terracotta transition-colors">hello@nanmaconstruct.com</a>
             </li>
           </ul>
           <form onSubmit={(e) => e.preventDefault()} className="flex border-b border-bone/30 focus-within:border-terracotta transition-colors">

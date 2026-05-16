@@ -66,13 +66,13 @@ export default function Projects() {
       <SEO
         title="Projects — Nanma Estates"
         description="Browse Nanma's curated portfolio of ongoing, ready-to-move-in, completed, and upcoming luxury residential projects."
-        url="https://nanmaestates.com/projects"
+        url="https://nanmaconstruct.com/projects"
       />
 
       {/* Header */}
       <section className="pt-32 md:pt-44 pb-12">
         <div className="container-x">
-          <span className="eyebrow mb-6">
+          <span className="eyebrow mt-12">
             <span className="number-tag">(Portfolio)</span> Curated 2026
           </span>
           <h1 className="display-1 mt-6 max-w-[14ch] text-balance">

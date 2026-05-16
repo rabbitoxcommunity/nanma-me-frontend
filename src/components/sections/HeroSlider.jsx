@@ -155,7 +155,7 @@ export default function HeroSlider() {
                     delay={0.1}
                     stagger={0.1}
                     duration={1}
-                    className="text-6xl xs:text-7xl md:text-8xl lg:text-[9rem] block"
+                    className="text-4xl xs:text-7xl md:text-8xl lg:text-[7rem] block"
                   />
                 </div>
                 <div className="overflow-hidden">
@@ -165,13 +165,13 @@ export default function HeroSlider() {
                     delay={0.3}
                     stagger={0.1}
                     duration={1}
-                    className="text-6xl xs:text-7xl md:text-8xl lg:text-[9rem] block editorial italic text-terracotta"
+                    className="text-4xl xs:text-7xl md:text-8xl lg:text-[7rem] block editorial italic text-terracotta"
                   />
                 </div>
               </h1>
 
               {slides[current].tagline && (
-                <div className="pt-4 max-w-xl">
+                <div className="max-w-xl">
                   <BlurText
                     text={slides[current].tagline}
                     delay={0.6}

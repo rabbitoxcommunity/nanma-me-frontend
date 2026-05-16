@@ -16,7 +16,7 @@ export default function Home() {
       <SEO
         title="Nanma Estates — Crafted Living. Built to Endure."
         description="Limited-edition luxury residential projects across India. Bespoke villas, sky homes, and architectural landmarks by Nanma Estates."
-        url="https://nanmaestates.com/"
+        url="https://nanmaconstruct.com/"
       />
       <HeroSlider />
       <FeaturedProjects />

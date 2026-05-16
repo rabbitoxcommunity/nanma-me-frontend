@@ -4,6 +4,7 @@ import { FiPlus, FiEdit2, FiTrash2, FiSearch, FiLayers } from "react-icons/fi";
 import { projectsApi } from "../api/endpoints";
 import { PageHeader, Button, EmptyState, StatusPill } from "../components/ui";
 import { useToast } from "../components/Toast";
+import { useConfirm } from "../components/ConfirmDialog";
 
 const statusOptions = [
   { value: "all", label: "All Statuses" },
@@ -19,6 +20,7 @@ export default function ProjectsList() {
   const [status, setStatus] = useState("all");
   const [q, setQ] = useState("");
   const toast = useToast();
+  const confirm = useConfirm();
 
   const load = () => {
     setLoading(true);
@@ -31,7 +33,13 @@ export default function ProjectsList() {
   useEffect(load, [status, q]); // eslint-disable-line
 
   const onDelete = async (id, name) => {
-    if (!window.confirm(`Delete "${name}"? This will also remove its uploaded media.`)) return;
+    const ok = await confirm({
+      title: `Delete "${name}"?`,
+      message: "This will permanently remove the project and all its uploaded media. This action cannot be undone.",
+      confirmLabel: "Delete project",
+      danger: true,
+    });
+    if (!ok) return;
     try {
       await projectsApi.remove(id);
       setItems((prev) => prev.filter((p) => p._id !== id));

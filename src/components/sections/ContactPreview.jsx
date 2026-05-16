@@ -6,7 +6,7 @@ import BlurText from "../../animations/BlurText";
 const items = [
   { Icon: FiMapPin, label: "Visit", value: "One Park Avenue, Worli, Mumbai 400 018" },
   { Icon: FiPhone, label: "Call", value: "+91 99999 99999", href: "tel:+919999999999" },
-  { Icon: FiMail, label: "Write", value: "hello@nanmaestates.com", href: "mailto:hello@nanmaestates.com" },
+  { Icon: FiMail, label: "Write", value: "hello@nanmaconstruct.com", href: "mailto:hello@nanmaconstruct.com" },
 ];
 
 export default function ContactPreview() {

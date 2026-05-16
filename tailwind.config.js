@@ -17,7 +17,7 @@ module.exports = {
         graphite: "#2a2722",    // headings
         smoke: "#6b6356",       // secondary text
         ash: "#a39885",         // muted
-        terracotta: "#c2562a",  // primary accent
+        terracotta: "#F07939",  // primary accent
         clay: "#a04826",        // hover accent
         sage: "#8b9474",        // secondary accent
         line: "rgba(26, 24, 21, 0.08)",

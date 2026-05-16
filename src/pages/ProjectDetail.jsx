@@ -99,7 +99,7 @@ export default function ProjectDetail() {
       <SEO
         title={project.metaTitle || `${project.title} — ${project.location} | Nanma Estates`}
         description={project.metaDescription || project.description}
-        url={`https://nanmaestates.com/projects/${project.slug}`}
+        url={`https://nanmaconstruct.com/projects/${project.slug}`}
         image={project.cover}
         type="article"
         schema={schema}

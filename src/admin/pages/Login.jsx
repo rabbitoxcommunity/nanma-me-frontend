@@ -3,6 +3,7 @@ import { useNavigate, useLocation, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FiMail, FiLock, FiArrowRight } from "react-icons/fi";
 import { useAuth } from "../context/AuthContext";
+import Logo from "../../components/ui/Logo";
 
 export default function Login() {
   const { login, isAuthenticated, loading } = useAuth();
@@ -40,11 +41,8 @@ export default function Login() {
         <div className="absolute bottom-0 left-0 w-56 h-56 rounded-full bg-terracotta/5 translate-y-1/3 -translate-x-1/3" />
 
         {/* Brand */}
-        <div className="relative z-10 flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-terracotta flex items-center justify-center">
-            <span className="text-white font-bold">N</span>
-          </div>
-          <span className="text-graphite text-lg font-semibold tracking-tight">Nanma Estates</span>
+        <div className="relative z-10 text-graphite">
+          <Logo showTagline />
         </div>
 
         {/* Illustration area */}
@@ -84,11 +82,8 @@ export default function Login() {
           className="w-full max-w-sm"
         >
           {/* Mobile brand */}
-          <div className="flex items-center gap-3 mb-8 lg:hidden">
-            <div className="w-9 h-9 rounded-xl bg-terracotta flex items-center justify-center">
-              <span className="text-white font-bold">N</span>
-            </div>
-            <span className="text-graphite text-lg font-semibold tracking-tight">Nanma Estates</span>
+          <div className="mb-8 lg:hidden text-graphite">
+            <Logo showTagline />
           </div>
 
           <h1 className="text-[28px] text-graphite font-semibold tracking-tight mb-1.5 leading-tight">Welcome back</h1>
@@ -106,7 +101,7 @@ export default function Login() {
                   autoComplete="username"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="admin@nanmaestates.com"
+                  placeholder="admin@nanmaconstruct.com"
                   required
                   className="w-full bg-white border border-[rgba(26,24,21,0.14)] rounded-xl pl-10 pr-4 py-3 text-sm text-graphite outline-none focus:border-terracotta/50 focus:ring-2 focus:ring-terracotta/10 placeholder:text-ash transition-all"
                 />

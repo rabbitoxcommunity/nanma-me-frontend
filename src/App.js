@@ -12,6 +12,7 @@ import PageLoader from "./components/ui/PageLoader";
 
 import { AuthProvider } from "./admin/context/AuthContext";
 import { ToastProvider } from "./admin/components/Toast";
+import { ConfirmProvider } from "./admin/components/ConfirmDialog";
 import ProtectedRoute from "./admin/components/ProtectedRoute";
 
 // ── Public pages (lazy) ──
@@ -88,9 +89,11 @@ function App() {
     <HelmetProvider>
       <AuthProvider>
         <ToastProvider>
-          <BrowserRouter>
-            <AnimatedRoutes />
-          </BrowserRouter>
+          <ConfirmProvider>
+            <BrowserRouter>
+              <AnimatedRoutes />
+            </BrowserRouter>
+          </ConfirmProvider>
         </ToastProvider>
       </AuthProvider>
     </HelmetProvider>

@@ -42,39 +42,21 @@ export default function Logo({
   showTagline = false,
   className = "",
   markClass = "",
+  markStyle = {},
   textClass = "",
   taglineClass = "",
 }) {
   if (variant === "stacked") {
     return (
       <div className={`inline-flex flex-col items-center ${className}`}>
-        <LogoMark className={`w-14 h-14 ${markClass}`} />
-        <div className={`font-display tracking-[0.35em] text-2xl mt-3 ${textClass}`}>
-          NANMA
-        </div>
-        {showTagline && (
-          <div className={`text-[11px] tracking-[0.2em] mt-1 opacity-70 ${taglineClass}`}>
-            By Meeran
-          </div>
-        )}
+        <img src="/logo.png" alt="Nanma" className={markClass} style={markStyle} />
       </div>
     );
   }
 
-  // Horizontal (used in navbar/footer header)
   return (
     <div className={`inline-flex items-center gap-2.5 ${className}`}>
-      <LogoMark className={`w-7 h-7 ${markClass}`} />
-      <div className="flex flex-col leading-none">
-        <span className={`font-display tracking-[0.32em] text-[15px] ${textClass}`}>
-          NANMA
-        </span>
-        {showTagline && (
-          <span className={`text-[8.5px] tracking-[0.22em] mt-1 opacity-70 ${taglineClass}`}>
-            By Meeran
-          </span>
-        )}
-      </div>
+      <img src="/logo.png" alt="Nanma" className={markClass} style={markStyle} />
     </div>
   );
 }

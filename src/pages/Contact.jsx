@@ -10,9 +10,9 @@ import SEO from "../components/ui/SEO";
 import { enquiriesApi } from "../admin/api/endpoints";
 
 const offices = [
-  { city: "Mumbai", line1: "One Park Avenue, Worli", line2: "Mumbai 400 018", phone: "+91 99999 99999", email: "mumbai@nanmaestates.com" },
-  { city: "Bangalore", line1: "12th Main, Indiranagar", line2: "Bangalore 560 008", phone: "+91 99999 99988", email: "bangalore@nanmaestates.com" },
-  { city: "Delhi NCR", line1: "DLF Phase II, Gurugram", line2: "Haryana 122 002", phone: "+91 99999 99977", email: "delhi@nanmaestates.com" },
+  { city: "Mumbai", line1: "One Park Avenue, Worli", line2: "Mumbai 400 018", phone: "+91 99999 99999", email: "mumbai@nanmaconstruct.com" },
+  { city: "Bangalore", line1: "12th Main, Indiranagar", line2: "Bangalore 560 008", phone: "+91 99999 99988", email: "bangalore@nanmaconstruct.com" },
+  { city: "Delhi NCR", line1: "DLF Phase II, Gurugram", line2: "Haryana 122 002", phone: "+91 99999 99977", email: "delhi@nanmaconstruct.com" },
 ];
 
 const socials = [
@@ -50,13 +50,13 @@ export default function Contact() {
       <SEO
         title="Contact Nanma Estates — Begin a Conversation"
         description="Get in touch with Nanma Estates. Visit our offices in Mumbai, Bangalore and Delhi NCR, message us on WhatsApp, or submit an enquiry."
-        url="https://nanmaestates.com/contact"
+        url="https://nanmaconstruct.com/contact"
       />
 
       {/* HERO */}
       <section className="pt-32 md:pt-44 pb-12">
         <div className="container-x">
-          <span className="eyebrow mb-6">
+          <span className="eyebrow mt-12">
             <span className="number-tag">(Contact)</span> Begin a conversation
           </span>
           <h1 className="display-1 mt-6 max-w-[14ch] text-balance">
@@ -253,8 +253,8 @@ export default function Contact() {
                 <FiMail className="w-5 h-5 text-terracotta shrink-0 mt-1" />
                 <div>
                   <div className="text-xs uppercase tracking-ultrawide text-smoke">Email</div>
-                  <a href="mailto:hello@nanmaestates.com" data-cursor="hover" className="text-graphite hover:text-terracotta transition-colors">
-                    hello@nanmaestates.com
+                  <a href="mailto:hello@nanmaconstruct.com" data-cursor="hover" className="text-graphite hover:text-terracotta transition-colors">
+                    hello@nanmaconstruct.com
                   </a>
                 </div>
               </div>

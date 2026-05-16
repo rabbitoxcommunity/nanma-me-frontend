@@ -5,6 +5,7 @@ import {
   FiMenu, FiX, FiExternalLink,
 } from "react-icons/fi";
 import { useAuth } from "../context/AuthContext";
+import Logo from "../../components/ui/Logo";
 
 const NAV_GROUPS = [
   {
@@ -44,14 +45,11 @@ export default function AdminLayout() {
     <div className="admin-shell min-h-screen bg-[#F5F5F7] flex text-graphite">
       {/* Mobile top bar */}
       <header className="lg:hidden fixed top-0 inset-x-0 flex items-center justify-between bg-white/90 backdrop-blur-md border-b border-[rgba(26,24,21,0.08)] px-4 py-3 z-40">
-        <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-xl bg-terracotta flex items-center justify-center shadow-sm shadow-terracotta/30">
-            <span className="text-white text-xs font-bold leading-none">N</span>
-          </div>
-          <div className="leading-none">
-            <div className="text-sm font-semibold tracking-tight text-graphite">Nanma</div>
-            <div className="text-[9px] uppercase tracking-[0.2em] text-ash mt-0.5">Admin</div>
-          </div>
+        <div className="flex items-center gap-2.5 text-graphite">
+          <Logo />
+          <span className="text-[9px] uppercase tracking-[0.2em] text-ash leading-none border-l border-line pl-2.5">
+            Admin
+          </span>
         </div>
         <button
           onClick={() => setOpen(!open)}
@@ -69,14 +67,11 @@ export default function AdminLayout() {
         }`}
       >
         {/* Brand */}
-        <div className="hidden lg:flex items-center gap-3 px-5 py-5 border-b border-[rgba(26,24,21,0.07)]">
-          <div className="w-9 h-9 rounded-xl bg-terracotta flex items-center justify-center shrink-0 shadow-sm shadow-terracotta/30">
-            <span className="text-white text-sm font-bold leading-none">N</span>
-          </div>
-          <div className="min-w-0">
-            <div className="text-sm font-semibold tracking-tight text-graphite leading-tight">Nanma Estates</div>
-            <div className="text-[10px] text-ash mt-0.5 uppercase tracking-[0.18em]">Admin Console</div>
-          </div>
+        <div className="hidden lg:flex items-center gap-3 px-5 py-5 border-b border-[rgba(26,24,21,0.07)] text-graphite">
+          <Logo showTagline />
+          <span className="ml-auto text-[9px] uppercase tracking-[0.2em] text-ash leading-none border-l border-line pl-2.5">
+            Admin
+          </span>
         </div>
 
         {/* Nav groups */}

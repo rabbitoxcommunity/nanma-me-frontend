@@ -48,13 +48,13 @@ export default function About() {
       <SEO
         title="About Nanma Estates — Our Story & Practice"
         description="Founded in 2006, Nanma Estates is a boutique luxury developer building a small portfolio of architecturally significant residences across India."
-        url="https://nanmaestates.com/about"
+        url="https://nanmaconstruct.com/about"
       />
 
       {/* HERO */}
       <section className="pt-32 md:pt-44 pb-12">
         <div className="container-x">
-          <span className="eyebrow mb-6">
+          <span className="eyebrow mt-12">
             <span className="number-tag">(About)</span> Our practice
           </span>
           <h1 className="display-1 mt-6 max-w-[16ch] text-balance">
