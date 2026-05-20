@@ -8,6 +8,7 @@ import {
 } from "../components/ui";
 import RichTextEditor from "../components/RichTextEditor";
 import Repeater from "../components/Repeater";
+import UnitsManager from "../components/UnitsManager";
 import { AMENITY_ICONS, SPEC_ICONS } from "../../utils/iconCatalogs";
 
 const STATUS_OPTIONS = [
@@ -40,6 +41,7 @@ const blankProject = {
   videoUrl: "",
   amenities: [],
   specifications: [],
+  inventory: [],
   connectivity: [],
   mapEmbed: "",
   metaTitle: "",
@@ -77,9 +79,24 @@ export default function ProjectForm() {
         // Mixing them into form state causes stale values to overwrite uploads on save.
         // eslint-disable-next-line no-unused-vars
         const { featuredImage, galleryImages, _id, slug, createdAt, updatedAt, createdBy, ...formFields } = p;
+
+        // ─── Legacy-data migration ──────────────────────────────────
+        // Older records may have the inventory array stored under `units`
+        // (before the rename). Coerce: array → move to `inventory`, force
+        // `units` back to a string so the Mongoose schema doesn't choke
+        // on save.
+        const legacyArray = Array.isArray(formFields.units) ? formFields.units : null;
+        const safeUnits =
+          typeof formFields.units === "string" ? formFields.units : "";
+        const safeInventory = Array.isArray(formFields.inventory)
+          ? formFields.inventory
+          : legacyArray || [];
+
         setData({
           ...blankProject,
           ...formFields,
+          units: safeUnits,
+          inventory: safeInventory,
           keywords: Array.isArray(p.keywords) ? p.keywords.join(", ") : p.keywords || "",
         });
       })
@@ -104,8 +121,15 @@ export default function ProjectForm() {
       const payload = {
         ...formOnly,
         keywords: data.keywords,
+        // Schema field `units` is a STRING ("184 Apartments"). If state somehow
+        // holds an array from legacy data, coerce to empty so Mongoose doesn't
+        // throw a Cast error.
+        units: typeof data.units === "string" ? data.units : "",
         amenities: (data.amenities || []).filter((a) => a && a.title && a.title.trim()),
         specifications: (data.specifications || []).filter((s) => s && s.title && s.title.trim()),
+        inventory: (Array.isArray(data.inventory) ? data.inventory : []).filter(
+          (u) => u && u.unitNumber && u.unitNumber.trim()
+        ),
         connectivity: (data.connectivity || []).filter((c) => c && c.label && c.label.trim()),
       };
       if (isEdit) {
@@ -406,6 +430,21 @@ export default function ProjectForm() {
               ]}
               addLabel="Add Landmark"
               emptyMessage="No nearby landmarks yet — click Add Landmark."
+            />
+          </Card>
+
+          {/* Inventory / Unit availability */}
+          <Card className="p-6 space-y-5">
+            <div>
+              <h2 className="text-base font-semibold tracking-tight text-graphite">Inventory & Availability</h2>
+              <p className="text-xs text-smoke mt-1">
+                Add each apartment / villa with its status. Visitors will see a
+                live availability chart on the project page. <strong>Unit number is required</strong> — other fields are optional.
+              </p>
+            </div>
+            <UnitsManager
+              value={data.inventory || []}
+              onChange={(v) => set("inventory", v)}
             />
           </Card>
 

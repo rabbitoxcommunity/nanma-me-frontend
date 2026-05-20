@@ -21,6 +21,7 @@ import SEO from "../components/ui/SEO";
 import ProjectGallery from "../components/project/ProjectGallery";
 import SpecGrid from "../components/project/SpecGrid";
 import VideoEmbed from "../components/project/VideoEmbed";
+import UnitAvailability from "../components/project/UnitAvailability";
 import InquiryForm from "../components/project/InquiryForm";
 import ProjectCard from "../components/project/ProjectCard";
 import { ProjectCardSkeleton } from "../components/ui/Skeleton";
@@ -234,6 +235,9 @@ export default function ProjectDetail() {
           </div>
         </section>
       )}
+
+      {/* UNIT AVAILABILITY */}
+      <UnitAvailability inventory={project.inventory} projectTitle={project.title} />
 
       {/* AMENITIES */}
       {project.amenities?.length > 0 && (

@@ -29,6 +29,19 @@ export function adaptProject(p) {
   const galleryWithFallback = gallery.length ? gallery : [cover];
   const pinShort = (p.location || "").split(",")[0]?.trim() || "";
 
+  // Legacy guard — older records may still have `units` as an array of unit
+  // objects (from before the field was renamed to `inventory`). Treat the
+  // STRING-typed `units` (e.g. "184 Apartments") as the only valid form here.
+  const unitsString = typeof p.units === "string" ? p.units : "";
+
+  // Inventory comes from `inventory` (new field) OR from the legacy `units`
+  // array if a record was saved before the rename.
+  const inventoryRaw = Array.isArray(p.inventory)
+    ? p.inventory
+    : Array.isArray(p.units)
+    ? p.units
+    : [];
+
   return {
     id: p._id,
     slug: p.slug,
@@ -51,7 +64,7 @@ export function adaptProject(p) {
         : p.propertyType || "Project",
 
     // Display strings used by ProjectCard
-    units: p.bhk || p.units || "—",
+    units: p.bhk || unitsString || "—",
     sizeRange: p.sqft || "",
     priceFrom: p.priceFrom || "",
     handover: p.handover || "",
@@ -75,11 +88,16 @@ export function adaptProject(p) {
     // Connectivity / Nearby cards under the map (admin-editable)
     connectivity: p.connectivity || [],
 
+    // Unit availability inventory (admin-editable) — renamed from `units` to
+    // avoid colliding with the existing `units` string field on Project
+    // (e.g. "184 Apartments") that the Overview row consumes.
+    inventory: inventoryRaw,
+
     // Overview rows (rendered in ProjectDetail)
     overview: [
       p.developmentSize && { label: "Development Size", value: p.developmentSize },
       p.floor && { label: "Floor / Tower", value: p.floor },
-      p.units && { label: "Total Units", value: p.units },
+      unitsString && { label: "Total Units", value: unitsString },
       p.bhk && { label: "Configuration", value: p.bhk },
       p.handover && { label: "Possession", value: p.handover },
       p.reraNumber && { label: "RERA No.", value: p.reraNumber },
