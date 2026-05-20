@@ -37,11 +37,18 @@ export function adaptProject(p) {
     location: p.location || "",
     pinShort,
 
-    // Status / type
+    // Status / type — when admin picked "Other" and filled in the custom
+    // text, surface that custom string instead of the literal "Other".
     status: p.status,
     statusLabel: STATUS_LABELS[p.status] || p.status,
-    type: p.propertyType || "Project",
-    tag: p.propertyType || "Project",
+    type:
+      p.propertyType === "Other" && p.propertyTypeOther
+        ? p.propertyTypeOther
+        : p.propertyType || "Project",
+    tag:
+      p.propertyType === "Other" && p.propertyTypeOther
+        ? p.propertyTypeOther
+        : p.propertyType || "Project",
 
     // Display strings used by ProjectCard
     units: p.bhk || p.units || "—",
@@ -81,7 +88,10 @@ export function adaptProject(p) {
     // Spec strip on detail page (legacy field names kept for compatibility)
     bhk: p.bhk || "—",
     sqft: p.sqft || "—",
-    propertyType: p.propertyType || "—",
+    propertyType:
+      p.propertyType === "Other" && p.propertyTypeOther
+        ? p.propertyTypeOther
+        : p.propertyType || "—",
 
     // SEO
     metaTitle: p.metaTitle || `${p.name} — Nanma Properties`,

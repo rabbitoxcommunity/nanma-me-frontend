@@ -28,6 +28,7 @@ const blankProject = {
   location: "",
   status: "ongoing",
   propertyType: "Apartment",
+  propertyTypeOther: "",
   sqft: "",
   bhk: "",
   developmentSize: "",
@@ -254,6 +255,17 @@ export default function ProjectForm() {
                 options={PROPERTY_TYPES}
               />
             </div>
+
+            {/* Free-text input appears only when "Other" is selected */}
+            {data.propertyType === "Other" && (
+              <Input
+                label="Specify property type *"
+                value={data.propertyTypeOther}
+                onChange={(e) => set("propertyTypeOther", e.target.value)}
+                placeholder="e.g. Row House, Farmhouse, Plot + Construction"
+                hint="Shown on the public site in place of 'Other'."
+              />
+            )}
           </Card>
 
           {/* Specs */}

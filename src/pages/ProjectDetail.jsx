@@ -324,16 +324,17 @@ export default function ProjectDetail() {
       )}
 
       {/* LOCATION */}
-      <section className="py-20 md:py-28 bg-cream">
+      <section className="py-20 md:py-28 bg-bone">
         <div className="container-x">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+          {/* ── Section header ───────────────────────── */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-14">
             <div>
               <span className="eyebrow mb-4">
                 <span className="number-tag">(Location)</span> Where we are
               </span>
-              <h2 className="display-3 mt-5">
-                An address that{" "}
-                <span className="editorial text-terracotta">measures up.</span>
+              <h2 className="display-2 mt-5">
+                Connected to <br />
+                <span className="editorial text-terracotta">everything that matters.</span>
               </h2>
             </div>
             <a
@@ -348,9 +349,50 @@ export default function ProjectDetail() {
             </a>
           </div>
 
-          {/* Map + Form side by side */}
+          {/* ── CONNECTIVITY — minimal divided grid ────── */}
+          {project.connectivity?.length > 0 && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-line border-y border-line mb-10 md:mb-12">
+              {project.connectivity.map((l, i) => {
+                const Icon = pickConnectivityIcon(l.label);
+                return (
+                  <motion.div
+                    key={`${l.label}-${i}`}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-5% 0px" }}
+                    transition={{ delay: i * 0.06, duration: 0.5 }}
+                    className="py-7 md:py-8 px-5 md:px-7 group"
+                  >
+                    <Icon className="w-9 h-9 md:w-10 md:h-10 text-terracotta mb-6 transition-transform duration-500 group-hover:scale-110" />
+
+                    {/* Place name — now the headline */}
+                    <h3 className="font-display text-2xl md:text-3xl text-graphite leading-tight tracking-tighter2 mb-3">
+                      {l.label}
+                    </h3>
+
+                    {/* Distance + time — supporting line */}
+                    {(l.value || l.time) && (
+                      <div className="text-xs text-smoke">
+                        {l.value && (
+                          <span className="font-medium text-graphite">{l.value}</span>
+                        )}
+                        {l.value && l.time && (
+                          <span className="text-ash"> · </span>
+                        )}
+                        {l.time && (
+                          <span className="font-editorial italic">{l.time}</span>
+                        )}
+                      </div>
+                    )}
+                  </motion.div>
+                );
+              })}
+            </div>
+          )}
+
+          {/* ── Map + Form side by side ──────────────── */}
           <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 items-stretch">
-            {/* Map — 70% */}
+            {/* Map */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -375,7 +417,7 @@ export default function ProjectDetail() {
               )}
             </motion.div>
 
-            {/* Form — 30% */}
+            {/* Inquiry form */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -386,37 +428,6 @@ export default function ProjectDetail() {
               <InquiryForm projectTitle={project.title} projectId={project.id} />
             </motion.div>
           </div>
-
-          {/* Connectivity cards */}
-          {project.connectivity?.length > 0 && (
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mt-4">
-              {project.connectivity.map((l, i) => {
-                const Icon = pickConnectivityIcon(l.label);
-                return (
-                  <motion.div
-                    key={`${l.label}-${i}`}
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.06, duration: 0.5 }}
-                    className="bg-white border border-line rounded-sm px-4 py-4 flex items-center gap-3 group hover:border-terracotta/40 transition-colors duration-300"
-                  >
-                    <span className="w-9 h-9 rounded-sm bg-cream flex items-center justify-center shrink-0 text-terracotta group-hover:bg-terracotta group-hover:text-bone transition-colors duration-300">
-                      <Icon className="w-4 h-4" />
-                    </span>
-                    <div className="min-w-0">
-                      <div className="text-[10px] uppercase tracking-widest text-smoke truncate">
-                        {l.label}
-                      </div>
-                      <div className="text-sm font-medium text-graphite leading-tight">
-                        {l.value}{l.time && <span className="text-ash font-normal"> · {l.time}</span>}
-                      </div>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
-          )}
         </div>
       </section>
 

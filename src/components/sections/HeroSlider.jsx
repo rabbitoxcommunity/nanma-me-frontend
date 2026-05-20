@@ -57,7 +57,12 @@ function adaptToSlide(p) {
     p.featuredImage?.url || p.galleryImages?.[0]?.url || PLACEHOLDER_IMG;
   // Smart split: use full name as title; place property type / a single
   // descriptor on the italic terracotta sub-line for editorial feel.
-  const sub = p.propertyType || STATUS_LABELS[p.status] || "";
+  // When admin picked "Other", prefer the custom propertyTypeOther string.
+  const resolvedType =
+    p.propertyType === "Other" && p.propertyTypeOther
+      ? p.propertyTypeOther
+      : p.propertyType;
+  const sub = resolvedType || STATUS_LABELS[p.status] || "";
   return {
     img,
     label: STATUS_LABELS[p.status] || "Featured",
@@ -126,8 +131,10 @@ export default function HeroSlider() {
               alt={slide.title}
               className={`w-full h-full object-cover ${i === current ? "animate-slow-zoom" : ""}`}
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-graphite/40 via-graphite/10 to-graphite/80" />
-            <div className="absolute inset-0 bg-graphite/15" />
+            {/* Dark overlays — gradient runs bottom → top so text at bottom
+                is most readable, image stays visible at the top of the frame. */}
+            <div className="absolute inset-0 bg-gradient-to-t from-graphite/95 via-graphite/55 to-graphite/20" />
+            <div className="absolute inset-0 bg-graphite/20" />
           </motion.div>
         </motion.div>
       ))}
