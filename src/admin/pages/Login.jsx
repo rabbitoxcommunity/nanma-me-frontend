@@ -56,7 +56,7 @@ export default function Login() {
           <p className="text-white/90 text-lg font-medium leading-snug tracking-tight mb-3">
             "Crafting spaces that inspire<br />and endure."
           </p>
-          <p className="text-white/50 text-xs">Nanma By Meeran · Admin Panel</p>
+          <p className="text-white/50 text-xs">Nanma Properties · Admin Panel</p>
         </div>
       </div>
 
@@ -139,7 +139,7 @@ export default function Login() {
           </form>
 
           <p className="text-center text-xs text-ash mt-8">
-            Nanma By Meeran · Admin Portal · {new Date().getFullYear()}
+            Nanma Properties · Admin Portal · {new Date().getFullYear()}
           </p>
         </motion.div>
       </div>

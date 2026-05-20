@@ -1,6 +1,6 @@
-# Nanma By Meeran — MERN Frontend (React + Admin CMS)
+# Nanma Properties — MERN Frontend (React + Admin CMS)
 
-This is the React app for the Nanma By Meeran website.
+This is the React app for the Nanma Properties website.
 The companion **backend** lives at `../nanma-backend` and exposes the REST API + Cloudinary integration that this app talks to.
 
 ---

@@ -84,7 +84,7 @@ export function adaptProject(p) {
     propertyType: p.propertyType || "—",
 
     // SEO
-    metaTitle: p.metaTitle || `${p.name} — Nanma By Meeran`,
+    metaTitle: p.metaTitle || `${p.name} — Nanma Properties`,
     metaDescription:
       p.metaDescription ||
       (p.tagline ? `${p.tagline} — ${p.location}` : p.name),

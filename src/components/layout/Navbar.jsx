@@ -62,7 +62,7 @@ export default function Navbar() {
             <Link
               to="/"
               data-cursor="hover"
-              aria-label="Nanma by Meeran — Home"
+              aria-label="Nanma Properties — Home"
               className={`transition-colors ${dark ? "text-bone" : "text-graphite"}`}
             >
               <motion.div

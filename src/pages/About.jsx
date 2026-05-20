@@ -90,8 +90,8 @@ export default function About() {
   return (
     <PageTransition>
       <SEO
-        title="About Nanma By Meeran — Our Story & Practice"
-        description="Since our inception in 2012, Nanma By Meeran has delivered integrated building solutions with absolute single-source accountability — built on the rich lineage of Group Meeran."
+        title="About Nanma Properties — Our Story & Practice"
+        description="Since our inception in 2012, Nanma Properties has delivered integrated building solutions with absolute single-source accountability — built on the rich lineage of Group Meeran."
         url="https://nanmaconstruct.com/about"
       />
 
@@ -119,7 +119,7 @@ export default function About() {
             <motion.div style={{ y: heroY }} className="absolute inset-0 w-full h-[115%] -top-[8%]">
               <LazyImage
                 src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1800&q=85"
-                alt="Nanma By Meeran"
+                alt="Nanma Properties"
                 className="w-full h-full"
               />
             </motion.div>

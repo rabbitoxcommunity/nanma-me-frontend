@@ -15,8 +15,8 @@ export default function Home() {
   return (
     <PageTransition>
       <SEO
-        title="Nanma By Meeran — Crafted Living. Built to Endure."
-        description="Limited-edition luxury residential projects across India. Bespoke villas, sky homes, and architectural landmarks by Nanma By Meeran."
+        title="Nanma Properties — Crafted Living. Built to Endure."
+        description="Limited-edition luxury residential projects across India. Bespoke villas, sky homes, and architectural landmarks by Nanma Properties."
         url="https://nanmaconstruct.com/"
       />
       <HeroSlider />

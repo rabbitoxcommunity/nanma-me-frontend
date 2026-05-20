@@ -98,7 +98,7 @@ export default function ProjectDetail() {
   return (
     <PageTransition>
       <SEO
-        title={project.metaTitle || `${project.title} — ${project.location} | Nanma By Meeran`}
+        title={project.metaTitle || `${project.title} — ${project.location} | Nanma Properties`}
         description={project.metaDescription || project.description}
         url={`https://nanmaconstruct.com/projects/${project.slug}`}
         image={project.cover}
@@ -202,7 +202,7 @@ export default function ProjectDetail() {
                     <div className="text-xs uppercase tracking-ultrawide text-smoke mb-2">
                       {row.label}
                     </div>
-                    <div className="font-display text-xl md:text-2xl font-medium text-graphite leading-tight group-hover:text-terracotta transition-colors duration-300">
+                    <div className="font-display text-base md:text-lg font-medium text-graphite leading-tight group-hover:text-terracotta transition-colors duration-300">
                       {row.value}
                     </div>
                   </motion.div>

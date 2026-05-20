@@ -64,7 +64,7 @@ export default function Projects() {
   return (
     <PageTransition>
       <SEO
-        title="Projects — Nanma By Meeran"
+        title="Projects — Nanma Properties"
         description="Browse Nanma's curated portfolio of ongoing, ready-to-move-in, completed, and upcoming luxury residential projects."
         url="https://nanmaconstruct.com/projects"
       />

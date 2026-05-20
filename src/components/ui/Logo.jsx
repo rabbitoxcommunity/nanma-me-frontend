@@ -1,5 +1,5 @@
 /**
- * Nanma logo (SVG recreation of the "NANMA By Meeran" mark).
+ * Nanma logo (SVG recreation of the "Nanma Properties" mark).
  *
  * To swap with your raster logo file later: drop your image at
  *   public/logo.png
