@@ -37,7 +37,7 @@ export default function CompanyOverview() {
               transition={{ delay: 0.4, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="bg-cream rounded-sm p-6 -mt-16 ml-auto mr-6 md:mr-12 max-w-xs relative z-10 shadow-sm"
             >
-              <div className="font-display text-3xl text-graphite font-light tracking-tighter2">2006</div>
+              <div className="font-display text-3xl text-graphite font-light tracking-tighter2">2012</div>
               <div className="text-xs uppercase tracking-ultrawide text-smoke mt-1">
                 Year of Inception
               </div>
@@ -50,22 +50,22 @@ export default function CompanyOverview() {
               <span className="number-tag">(03)</span> Our Practice
             </span>
             <h2 className="display-2 mt-6">
-              <SplitText text="A small studio. " splitBy="word" stagger={0.06} />
+              <SplitText text="Built on the lineage " splitBy="word" stagger={0.06} />
               <br />
               <span className="editorial text-terracotta">
-                <SplitText text="An uncommon" splitBy="word" stagger={0.06} delay={0.4} />
+                <SplitText text="of Group" splitBy="word" stagger={0.06} delay={0.4} />
               </span>{" "}
-              <SplitText text="conviction." splitBy="char" stagger={0.05} delay={0.7} />
+              <SplitText text="Meeran." splitBy="char" stagger={0.05} delay={0.7} />
             </h2>
 
             <div className="space-y-5 mt-10 max-w-lg">
               <BlurText
-                text="Founded in 2006, Nanma is a small Mumbai-based real estate atelier — designing, building, and delivering a tightly held portfolio of luxury residences."
+                text="We are the culmination of a dream over a decade in the making. Our integrated building solutions ensure absolute single-source accountability across every facet of your construction needs — from strategic analysis and cutting-edge design to contracting and collaborative building."
                 className="body-lg block"
                 delay={0.5}
               />
               <BlurText
-                text="We never break ground on more than three projects at a time. Each one is treated as a singular act of architecture — not a unit of inventory."
+                text="Our in-house team of multidisciplinary experts in architecture, engineering and construction brings over three decades of experience — giving us a diverse perspective to better understand and build on our clients' vision."
                 className="body block"
                 delay={0.7}
               />
