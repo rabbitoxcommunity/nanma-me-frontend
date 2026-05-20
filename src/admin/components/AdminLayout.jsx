@@ -55,7 +55,7 @@ export default function AdminLayout() {
       {/* Mobile top bar */}
       <header className="lg:hidden fixed top-0 inset-x-0 flex items-center justify-between bg-white/90 backdrop-blur-md border-b border-[rgba(26,24,21,0.08)] px-4 py-3 z-40">
         <div className="flex items-center text-smoke" style={{ filter: "grayscale(1)" }}>
-          <Logo />
+          <Logo  />
         </div>
         <button
           onClick={() => setOpen(!open)}
@@ -73,11 +73,8 @@ export default function AdminLayout() {
         }`}
       >
         {/* Brand */}
-        <div
-          className="hidden lg:flex items-center px-5 py-5 border-b border-[rgba(26,24,21,0.07)] text-smoke"
-          style={{ filter: "grayscale(1)" }}
-        >
-          <Logo showTagline />
+        <div className="hidden lg:flex items-center px-5 py-5 border-b border-[rgba(26,24,21,0.07)]">
+          <Logo showTagline markClass="h-32" markStyle={{ filter: "brightness(0) saturate(0) invert(50%)" }} />
         </div>
 
         {/* Nav groups */}
