@@ -59,19 +59,19 @@ const team = [
     name: "Navas Meeran",
     role: "Chairman",
     quote: "Meeran Group has always believed in providing the finest quality products and services at the most affordable prices. Through Nanma we now extend the goodness in the construction sector.",
-    img: "/team/navas-meeran.jpg",
+    img: "/team/chairman.jpg",
   },
   {
     name: "Asheen Panakkat",
     role: "Managing Director",
     quote: "We bring in value to our customers through our openness and vast experience in the industry.",
-    img: "/team/asheen-panakkat.jpg",
+    img: "/team/md.jpg",
   },
   {
     name: "Mohamed Junaid",
     role: "Director",
     quote: "Nanma for us is not just a business venture, it is a way of giving back goodness to society.",
-    img: "/team/mohamed-junaid.jpg",
+    img: "/team/director.jpg",
   },
 ];
 

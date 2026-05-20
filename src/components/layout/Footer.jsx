@@ -113,10 +113,10 @@ export default function Footer() {
               <a href="mailto:hello@nanmaconstruct.com" data-cursor="hover" className="hover:text-terracotta transition-colors">hello@nanmaconstruct.com</a>
             </li>
           </ul>
-          <form onSubmit={(e) => e.preventDefault()} className="flex border-b border-bone/30 focus-within:border-terracotta transition-colors">
+          {/* <form onSubmit={(e) => e.preventDefault()} className="flex border-b border-bone/30 focus-within:border-terracotta transition-colors">
             <input type="email" placeholder="your@email.com" className="flex-1 bg-transparent py-2 text-sm text-bone placeholder:text-bone/30 outline-none" />
             <button type="submit" data-cursor="hover" className="text-terracotta px-2" aria-label="Subscribe">→</button>
-          </form>
+          </form> */}
         </div>
       </div>
 
