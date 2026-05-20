@@ -10,9 +10,8 @@ import SEO from "../components/ui/SEO";
 import { enquiriesApi } from "../admin/api/endpoints";
 
 const offices = [
-  { city: "Mumbai", line1: "One Park Avenue, Worli", line2: "Mumbai 400 018", phone: "+91 99999 99999", email: "mumbai@nanmaconstruct.com" },
-  { city: "Bangalore", line1: "12th Main, Indiranagar", line2: "Bangalore 560 008", phone: "+91 99999 99988", email: "bangalore@nanmaconstruct.com" },
-  { city: "Delhi NCR", line1: "DLF Phase II, Gurugram", line2: "Haryana 122 002", phone: "+91 99999 99977", email: "delhi@nanmaconstruct.com" },
+  { city: "Kochi", line1: "", line2: "Kochi, Kerala", phone: "+91 99999 99999", email: "hello@nanmaconstruct.com" },
+  { city: "Dubai", line1: "", line2: "Dubai, UAE", phone: "+971 99999 99999", email: "dubai@nanmaconstruct.com" },
 ];
 
 const socials = [
@@ -49,7 +48,7 @@ export default function Contact() {
     <PageTransition>
       <SEO
         title="Contact Nanma By Meeran — Begin a Conversation"
-        description="Get in touch with Nanma By Meeran. Visit our offices in Mumbai, Bangalore and Delhi NCR, message us on WhatsApp, or submit an enquiry."
+        description="Get in touch with Nanma By Meeran. Visit our offices in Kochi and Dubai, message us on WhatsApp, or submit an enquiry."
         url="https://nanmaconstruct.com/contact"
       />
 
@@ -298,14 +297,14 @@ export default function Contact() {
               <span className="number-tag">(Offices)</span> Visit us
             </span>
             <h2 className="display-2 mt-6">
-              <SplitText text="Three cities. " splitBy="word" stagger={0.06} />
+              <SplitText text="Two cities. " splitBy="word" stagger={0.06} />
               <br />
               <span className="editorial text-terracotta">
                 <SplitText text="One philosophy." splitBy="word" stagger={0.06} delay={0.3} />
               </span>
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-line">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-line">
             {offices.map((o, i) => (
               <motion.div
                 key={o.city}

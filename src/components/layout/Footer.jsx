@@ -128,7 +128,7 @@ export default function Footer() {
       </div>
 
       <div className="container-x pb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-3 text-xs text-bone/40">
-        <span>© 2026 Nanma By Meeran Pvt. Ltd. All rights reserved.</span>
+        <span>© {new Date().getFullYear()} Nanma By Meeran Pvt. Ltd. All rights reserved.</span>
         <span>RERA Registered · Equal Housing Opportunity</span>
       </div>
     </footer>

@@ -65,26 +65,26 @@ export default function Gallery() {
     <PageTransition>
       <SEO
         title="Gallery — Nanma By Meeran"
-        description="Explore the Nanma By Meeran gallery of architectural exteriors, interiors, amenities, and films from our completed and ongoing projects."
+        description="Explore the Nanma By Meeran project gallery — construction progress, completed structures, interiors and site moments from our portfolio of integrated building projects."
         url="https://nanmaconstruct.com/gallery"
       />
 
       <section className="pt-32 md:pt-44 pb-12">
         <div className="container-x">
           <span className="eyebrow mt-12">
-            <span className="number-tag">(Gallery)</span> A visual journal
+            <span className="number-tag">(Gallery)</span> Our work
           </span>
           <h1 className="display-1 mt-6 max-w-[14ch] text-balance">
-            <SplitText text="A glimpse, " splitBy="word" stagger={0.06} />
+            <SplitText text="Built with " splitBy="word" stagger={0.06} />
             <br />
             <span className="editorial text-terracotta">
-              <SplitText text="from inside." splitBy="word" stagger={0.06} delay={0.4} />
+              <SplitText text="conviction." splitBy="word" stagger={0.06} delay={0.4} />
             </span>
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mt-10">
             <div className="md:col-span-6 md:col-start-7">
               <BlurText
-                text="Architectural exteriors, intimate interiors, signature amenities, and short films — a curated visual record of our work."
+                text="A visual record of our projects — construction progress, completed structures, interiors and site moments captured across our portfolio."
                 className="body-lg"
                 delay={0.5}
               />

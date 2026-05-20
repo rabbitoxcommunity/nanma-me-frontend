@@ -73,7 +73,7 @@ export default function Projects() {
       <section className="pt-32 md:pt-44 pb-12">
         <div className="container-x">
           <span className="eyebrow mt-12">
-            <span className="number-tag">(Portfolio)</span> Curated 2026
+            <span className="number-tag">(Portfolio)</span> Curated {new Date().getFullYear()}
           </span>
           <h1 className="display-1 mt-6 max-w-[14ch] text-balance">
             <SplitText text="Every project, " splitBy="word" stagger={0.05} />

@@ -30,7 +30,7 @@ const timeline = [
     desc: "We leverage our financial strengths to help broken construction dreams see the light of day — reaffirming that construction is, above all, a social responsibility.",
   },
   {
-    year: "2026",
+    year: String(new Date().getFullYear()),
     title: "Building Tomorrow",
     desc: "Continuing to bring Nanma to our clients through zero tolerance, value engineering, and turnaround times up to one-third that of our competitors.",
   },
