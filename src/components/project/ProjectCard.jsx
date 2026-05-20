@@ -4,10 +4,10 @@ import { motion, useInView } from "framer-motion";
 import LazyImage from "../ui/LazyImage";
 
 const statusColors = {
-  ongoing: "bg-terracotta/15 text-terracotta",
-  ready: "bg-sage/20 text-sage",
-  completed: "bg-graphite/10 text-graphite",
-  upcoming: "bg-amber-500/15 text-amber-700",
+  ongoing: "bg-terracotta text-bone",
+  ready: "bg-emerald-600 text-white",
+  completed: "bg-graphite/80 text-bone",
+  upcoming: "bg-amber-500 text-white",
 };
 
 export default function ProjectCard({ project, index = 0 }) {

@@ -120,6 +120,8 @@
      Targets the HTML produced by react-quill (h2, h3, p, ul, ol, blockquote, a). */
   .prose-project {
     @apply text-smoke leading-relaxed;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
   .prose-project p { @apply mb-4; }
   .prose-project h2 {

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { FiPlus, FiEdit2, FiTrash2, FiSearch, FiLayers } from "react-icons/fi";
+import { FiPlus, FiEdit2, FiTrash2, FiSearch, FiLayers, FiStar, FiEyeOff } from "react-icons/fi";
+import { PiPushPin } from "react-icons/pi";
 import { projectsApi } from "../api/endpoints";
 import { PageHeader, Button, EmptyState, StatusPill } from "../components/ui";
 import { useToast } from "../components/Toast";
@@ -113,10 +114,11 @@ export default function ProjectsList() {
       ) : (
         <div className="bg-white rounded-2xl shadow-[0_1px_4px_rgba(26,24,21,0.06),0_4px_16px_rgba(26,24,21,0.04)] overflow-hidden">
           {/* Table header */}
-          <div className="grid grid-cols-[auto_1fr_auto_auto_auto] gap-4 items-center px-5 py-3 bg-[#F5F5F7] text-[10px] font-semibold uppercase tracking-ultrawide text-smoke border-b border-[rgba(26,24,21,0.06)]">
+          <div className="grid grid-cols-[auto_1fr_auto_auto_auto_auto] gap-4 items-center px-5 py-3 bg-[#F5F5F7] text-[10px] font-semibold uppercase tracking-ultrawide text-smoke border-b border-[rgba(26,24,21,0.06)]">
             <span className="w-12" />
             <span>Project</span>
             <span className="hidden md:block w-28">Status</span>
+            <span className="hidden lg:block w-24">Flags</span>
             <span className="hidden lg:block w-24">Updated</span>
             <span className="text-right w-20">Actions</span>
           </div>
@@ -125,7 +127,7 @@ export default function ProjectsList() {
             {items.map((p) => (
               <li
                 key={p._id}
-                className="grid grid-cols-[auto_1fr_auto_auto_auto] gap-4 items-center px-5 py-3.5 hover:bg-[rgba(26,24,21,0.02)] transition-colors group"
+                className="grid grid-cols-[auto_1fr_auto_auto_auto_auto] gap-4 items-center px-5 py-3.5 hover:bg-[rgba(26,24,21,0.02)] transition-colors group"
               >
                 {/* Thumbnail */}
                 <div className="w-12 h-12 rounded-xl overflow-hidden bg-[#F5F5F7] shrink-0">
@@ -147,6 +149,25 @@ export default function ProjectsList() {
                 {/* Status */}
                 <div className="hidden md:block w-28">
                   <StatusPill status={p.status} />
+                </div>
+
+                {/* Flags: published / featured / banner */}
+                <div className="hidden lg:flex w-24 items-center gap-1.5">
+                  {!p.isPublished && (
+                    <span title="Unpublished" className="inline-flex items-center gap-1 text-[10px] font-medium px-1.5 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200">
+                      <FiEyeOff className="w-2.5 h-2.5" /> Draft
+                    </span>
+                  )}
+                  {p.featured && (
+                    <span title="Pinned to Featured Projects" className="inline-flex items-center gap-1 text-[10px] font-medium px-1.5 py-0.5 rounded bg-terracotta/10 text-terracotta border border-terracotta/20">
+                      <PiPushPin className="w-2.5 h-2.5" /> Featured
+                    </span>
+                  )}
+                  {p.inBanner && (
+                    <span title="In home banner" className="inline-flex items-center gap-1 text-[10px] font-medium px-1.5 py-0.5 rounded bg-blue-50 text-blue-600 border border-blue-200">
+                      <FiStar className="w-2.5 h-2.5" /> Banner
+                    </span>
+                  )}
                 </div>
 
                 {/* Date */}

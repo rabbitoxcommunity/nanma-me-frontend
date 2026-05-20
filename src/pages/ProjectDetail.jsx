@@ -165,8 +165,9 @@ export default function ProjectDetail() {
 
       {/* OVERVIEW */}
       <section className="py-20 md:py-28">
-        <div className="container-x grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-          <div className="lg:col-span-5">
+        <div className="container-x grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Left — sticky heading so it doesn't create an empty gap with long content */}
+          <div className="lg:col-span-4 lg:sticky lg:top-28">
             <span className="eyebrow mb-5">
               <span className="number-tag">(Overview)</span> About this project
             </span>
@@ -176,13 +177,15 @@ export default function ProjectDetail() {
               <span className="editorial text-terracotta">redefined.</span>
             </h2>
           </div>
-          <div className="lg:col-span-6 lg:col-start-7">
+
+          {/* Right — description + specs table */}
+          <div className="lg:col-span-7 lg:col-start-6">
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-5% 0px" }}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-              className="prose-project body-lg"
+              className="prose-project body-lg break-words"
               dangerouslySetInnerHTML={{ __html: project.description || "" }}
             />
             {project.overview?.length > 0 && (
@@ -194,9 +197,9 @@ export default function ProjectDetail() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: i * 0.06 }}
-                    className="flex justify-between border-b border-line pb-4"
+                    className="flex justify-between gap-4 border-b border-line pb-4"
                   >
-                    <span className="text-xs uppercase tracking-ultrawide text-smoke">
+                    <span className="text-xs uppercase tracking-ultrawide text-smoke shrink-0">
                       {row.label}
                     </span>
                     <span className="text-sm text-graphite text-right font-medium">

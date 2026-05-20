@@ -15,23 +15,12 @@ export default function FeaturedProjects() {
     let alive = true;
     setLoading(true);
     setError(false);
-    // Try featured first, fall back to most-recent if none flagged.
     projectsApi
       .publicList({ featured: true, limit: 3 })
       .then(({ items }) => {
         if (!alive) return;
-        if (items.length) {
-          setItems(adaptProjects(items));
-          setLoading(false);
-        } else {
-          return projectsApi
-            .publicList({ limit: 3 })
-            .then(({ items }) => {
-              if (!alive) return;
-              setItems(adaptProjects(items));
-              setLoading(false);
-            });
-        }
+        setItems(adaptProjects(items));
+        setLoading(false);
       })
       .catch(() => {
         if (!alive) return;
@@ -42,6 +31,19 @@ export default function FeaturedProjects() {
       alive = false;
     };
   }, []);
+
+  // Don't render the section at all while loading or if nothing is pinned
+  if (loading) return (
+    <section className="py-24 md:py-36">
+      <div className="container-x">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
+          {[0, 1, 2].map((i) => <ProjectCardSkeleton key={i} />)}
+        </div>
+      </div>
+    </section>
+  );
+
+  if (error || items.length === 0) return null;
 
   return (
     <section className="py-24 md:py-36">
@@ -61,26 +63,11 @@ export default function FeaturedProjects() {
             <SectionCTA to="/projects">View all projects</SectionCTA>
           </div>
         </div>
-
-        {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
-            {[0, 1, 2].map((i) => <ProjectCardSkeleton key={i} />)}
-          </div>
-        ) : error ? (
-          <div className="text-center py-16 text-smoke">
-            Unable to load projects right now.
-          </div>
-        ) : items.length === 0 ? (
-          <div className="text-center py-16 text-smoke">
-            New projects coming soon.
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
-            {items.map((p, i) => (
-              <ProjectCard key={p.slug} project={p} index={i} />
-            ))}
-          </div>
-        )}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
+          {items.map((p, i) => (
+            <ProjectCard key={p.slug} project={p} index={i} />
+          ))}
+        </div>
       </div>
     </section>
   );
