@@ -12,7 +12,7 @@ export default function TestimonialsSection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
             <span className="eyebrow mb-5">
-              <span className="number-tag">(06)</span> Words from owners
+              <span className="number-tag">(07)</span> Words from owners
             </span>
             <h2 className="display-2 mt-6">
               <SplitText text="What our " splitBy="word" stagger={0.06} />

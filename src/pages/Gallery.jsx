@@ -64,8 +64,8 @@ export default function Gallery() {
   return (
     <PageTransition>
       <SEO
-        title="Gallery — Nanma Estates"
-        description="Explore the Nanma Estates gallery of architectural exteriors, interiors, amenities, and films from our completed and ongoing projects."
+        title="Gallery — Nanma By Meeran"
+        description="Explore the Nanma By Meeran gallery of architectural exteriors, interiors, amenities, and films from our completed and ongoing projects."
         url="https://nanmaconstruct.com/gallery"
       />
 

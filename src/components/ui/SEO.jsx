@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet-async";
 
 export default function SEO({
-  title = "Nanma Estates — Crafted Living, Built to Endure",
-  description = "Nanma Estates designs and develops a small portfolio of luxury residences across India — bespoke villas, sky homes, and limited-edition residential projects.",
+  title = "Nanma By Meeran — Crafted Living, Built to Endure",
+  description = "Nanma By Meeran designs and develops a small portfolio of luxury residences across India — bespoke villas, sky homes, and limited-edition residential projects.",
   image = "https://nanmaconstruct.com/og-image.jpg",
   url = "https://nanmaconstruct.com",
   type = "website",

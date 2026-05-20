@@ -14,7 +14,7 @@ export default function CompanyOverview() {
   const imgY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
 
   return (
-    <section ref={ref} className="py-24 md:py-36">
+    <section ref={ref} className="py-14 md:py-20">
       <div className="container-x">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           {/* Left image */}

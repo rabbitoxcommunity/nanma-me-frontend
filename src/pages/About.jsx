@@ -46,8 +46,8 @@ export default function About() {
   return (
     <PageTransition>
       <SEO
-        title="About Nanma Estates — Our Story & Practice"
-        description="Founded in 2006, Nanma Estates is a boutique luxury developer building a small portfolio of architecturally significant residences across India."
+        title="About Nanma By Meeran — Our Story & Practice"
+        description="Founded in 2006, Nanma By Meeran is a boutique luxury developer building a small portfolio of architecturally significant residences across India."
         url="https://nanmaconstruct.com/about"
       />
 

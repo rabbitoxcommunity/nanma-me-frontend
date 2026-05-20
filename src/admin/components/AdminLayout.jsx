@@ -5,6 +5,7 @@ import {
   FiMenu, FiX, FiExternalLink,
 } from "react-icons/fi";
 import { useAuth } from "../context/AuthContext";
+import { useConfirm } from "./ConfirmDialog";
 import Logo from "../../components/ui/Logo";
 
 const NAV_GROUPS = [
@@ -27,9 +28,17 @@ const NAV_GROUPS = [
 export default function AdminLayout() {
   const { admin, logout } = useAuth();
   const navigate = useNavigate();
+  const confirm = useConfirm();
   const [open, setOpen] = useState(false);
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    const ok = await confirm({
+      title: "Sign out of the admin?",
+      message: "You'll need to sign in again to manage projects, gallery, and enquiries.",
+      confirmLabel: "Sign out",
+      cancelLabel: "Stay signed in",
+    });
+    if (!ok) return;
     logout();
     navigate("/admin/login", { replace: true });
   };
@@ -45,11 +54,8 @@ export default function AdminLayout() {
     <div className="admin-shell min-h-screen bg-[#F5F5F7] flex text-graphite">
       {/* Mobile top bar */}
       <header className="lg:hidden fixed top-0 inset-x-0 flex items-center justify-between bg-white/90 backdrop-blur-md border-b border-[rgba(26,24,21,0.08)] px-4 py-3 z-40">
-        <div className="flex items-center gap-2.5 text-graphite">
+        <div className="flex items-center text-smoke" style={{ filter: "grayscale(1)" }}>
           <Logo />
-          <span className="text-[9px] uppercase tracking-[0.2em] text-ash leading-none border-l border-line pl-2.5">
-            Admin
-          </span>
         </div>
         <button
           onClick={() => setOpen(!open)}
@@ -67,11 +73,11 @@ export default function AdminLayout() {
         }`}
       >
         {/* Brand */}
-        <div className="hidden lg:flex items-center gap-3 px-5 py-5 border-b border-[rgba(26,24,21,0.07)] text-graphite">
+        <div
+          className="hidden lg:flex items-center px-5 py-5 border-b border-[rgba(26,24,21,0.07)] text-smoke"
+          style={{ filter: "grayscale(1)" }}
+        >
           <Logo showTagline />
-          <span className="ml-auto text-[9px] uppercase tracking-[0.2em] text-ash leading-none border-l border-line pl-2.5">
-            Admin
-          </span>
         </div>
 
         {/* Nav groups */}

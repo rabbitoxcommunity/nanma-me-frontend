@@ -15,7 +15,7 @@ export default function Counters() {
       <div className="container-x">
         <div className="max-w-3xl mb-16">
           <span className="eyebrow text-bone/50 mb-5">
-            <span className="text-terracotta editorial italic normal-case text-base">(05)</span>
+            <span className="text-terracotta editorial italic normal-case text-base">(06)</span>
             <span className="ml-2">By the numbers</span>
           </span>
           <h2 className="display-2 !text-bone mt-6">

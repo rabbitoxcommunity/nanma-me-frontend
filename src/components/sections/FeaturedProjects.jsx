@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import SplitText from "../../animations/SplitText";
 import ProjectCard from "../project/ProjectCard";
 import { ProjectCardSkeleton } from "../ui/Skeleton";
+import SectionCTA from "../ui/SectionCTA";
 import { projectsApi } from "../../admin/api/endpoints";
 import { adaptProjects } from "../../utils/projectAdapter";
 
@@ -46,22 +46,20 @@ export default function FeaturedProjects() {
   return (
     <section className="py-24 md:py-36">
       <div className="container-x">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14">
-          <div>
-            <span className="eyebrow mb-5">
-              <span className="number-tag">(02)</span> Featured Projects
-            </span>
-            <h2 className="display-2 mt-6">
+        <div className="mb-14">
+          <span className="eyebrow mb-5">
+            <span className="number-tag">(02)</span> Featured Projects
+          </span>
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-10 mt-6">
+            <h2 className="display-2">
               <SplitText text="Limited editions, " splitBy="word" stagger={0.06} />
               <br />
               <span className="editorial text-terracotta">
                 <SplitText text="quietly remarkable." splitBy="word" stagger={0.06} delay={0.3} />
               </span>
             </h2>
+            <SectionCTA to="/projects">View all projects</SectionCTA>
           </div>
-          <Link to="/projects" data-cursor="hover" className="btn-link">
-            View all projects <span aria-hidden>→</span>
-          </Link>
         </div>
 
         {loading ? (

@@ -2,30 +2,35 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <!-- Brand logo as SVG favicon — scales perfectly across all browser sizes.
+         PNG/ico fallbacks for browsers without SVG favicon support. ?v= busts cache. -->
+    <link rel="icon" type="image/svg+xml" href="%PUBLIC_URL%/favicon.svg?v=4" />
+    <link rel="alternate icon" type="image/png" href="%PUBLIC_URL%/logo.png?v=4" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico?v=4" />
+    <link rel="mask-icon" href="%PUBLIC_URL%/favicon.svg?v=4" color="#c2562a" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#ffffff" />
 
     <!-- Primary SEO -->
-    <title>NANMA Estates — Luxury Real Estate</title>
-    <meta name="description" content="NANMA Estates offers curated luxury real estate — bespoke residences, investment properties, and exclusive estates crafted for the discerning few." />
-    <meta name="keywords" content="luxury real estate, premium properties, exclusive estates, luxury homes, NANMA Estates, high-end real estate" />
+    <title>Nanma By Meeran — Luxury Real Estate</title>
+    <meta name="description" content="Nanma By Meeran offers curated luxury real estate — bespoke residences, investment properties, and exclusive estates crafted for the discerning few." />
+    <meta name="keywords" content="luxury real estate, premium properties, exclusive estates, luxury homes, Nanma By Meeran, high-end real estate" />
     <meta name="robots" content="index, follow" />
-    <meta name="author" content="NANMA Estates" />
+    <meta name="author" content="Nanma By Meeran" />
     <link rel="canonical" href="https://nanmaconstruct.com/" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://nanmaconstruct.com/" />
-    <meta property="og:title" content="NANMA Estates — Luxury Real Estate" />
+    <meta property="og:title" content="Nanma By Meeran — Luxury Real Estate" />
     <meta property="og:description" content="Curated luxury real estate for the discerning few. Discover bespoke residences and exclusive estates." />
     <meta property="og:image" content="https://nanmaconstruct.com/og-image.jpg" />
-    <meta property="og:site_name" content="NANMA Estates" />
+    <meta property="og:site_name" content="Nanma By Meeran" />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="NANMA Estates — Luxury Real Estate" />
+    <meta name="twitter:title" content="Nanma By Meeran — Luxury Real Estate" />
     <meta name="twitter:description" content="Curated luxury real estate for the discerning few." />
     <meta name="twitter:image" content="https://nanmaconstruct.com/og-image.jpg" />
 
@@ -34,7 +39,7 @@
     {
       "@context": "https://schema.org",
       "@type": "RealEstateAgent",
-      "name": "NANMA Estates",
+      "name": "Nanma By Meeran",
       "description": "Curated luxury real estate for the discerning few.",
       "url": "https://nanmaconstruct.com",
       "telephone": "+1-800-NANMA-01",
@@ -61,7 +66,7 @@
       rel="stylesheet"
     />
 
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png?v=3" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
   </head>
   <body>

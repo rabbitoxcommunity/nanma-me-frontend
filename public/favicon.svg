@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 100" fill="#c2562a">
+  <!-- Building 1 — taller, left (18 slats) -->
+  <rect x="8" y="4" width="44" height="2" rx="0.4"/>
+  <rect x="8" y="8" width="44" height="2" rx="0.4"/>
+  <rect x="8" y="12" width="44" height="2" rx="0.4"/>
+  <rect x="8" y="16" width="44" height="2" rx="0.4"/>
+  <rect x="8" y="20" width="44" height="2" rx="0.4"/>
+  <rect x="8" y="24" width="44" height="2" rx="0.4"/>
+  <rect x="8" y="28" width="44" height="2" rx="0.4"/>
+  <rect x="8" y="32" width="44" height="2" rx="0.4"/>
+  <rect x="8" y="36" width="44" height="2" rx="0.4"/>
+  <rect x="8" y="40" width="44" height="2" rx="0.4"/>
+  <rect x="8" y="44" width="44" height="2" rx="0.4"/>
+  <rect x="8" y="48" width="44" height="2" rx="0.4"/>
+  <rect x="8" y="52" width="44" height="2" rx="0.4"/>
+  <rect x="8" y="56" width="44" height="2" rx="0.4"/>
+  <rect x="8" y="60" width="44" height="2" rx="0.4"/>
+  <rect x="8" y="64" width="44" height="2" rx="0.4"/>
+  <rect x="8" y="68" width="44" height="2" rx="0.4"/>
+  <rect x="8" y="72" width="44" height="2" rx="0.4"/>
+  <!-- Building 2 — shorter, right (13 slats) -->
+  <rect x="56" y="28" width="38" height="2" rx="0.4"/>
+  <rect x="56" y="32" width="38" height="2" rx="0.4"/>
+  <rect x="56" y="36" width="38" height="2" rx="0.4"/>
+  <rect x="56" y="40" width="38" height="2" rx="0.4"/>
+  <rect x="56" y="44" width="38" height="2" rx="0.4"/>
+  <rect x="56" y="48" width="38" height="2" rx="0.4"/>
+  <rect x="56" y="52" width="38" height="2" rx="0.4"/>
+  <rect x="56" y="56" width="38" height="2" rx="0.4"/>
+  <rect x="56" y="60" width="38" height="2" rx="0.4"/>
+  <rect x="56" y="64" width="38" height="2" rx="0.4"/>
+  <rect x="56" y="68" width="38" height="2" rx="0.4"/>
+  <rect x="56" y="72" width="38" height="2" rx="0.4"/>
+  <rect x="56" y="76" width="38" height="2" rx="0.4"/>
+</svg>

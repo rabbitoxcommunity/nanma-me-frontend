@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import SplitText from "../../animations/SplitText";
 import LazyImage from "../ui/LazyImage";
+import SectionCTA from "../ui/SectionCTA";
 import { galleryService } from "../../services/galleryService";
 
 export default function GalleryPreview() {
@@ -37,21 +37,19 @@ export default function GalleryPreview() {
   return (
     <section className="py-24 md:py-32">
       <div className="container-x">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
-          <div>
-            <span className="eyebrow mb-5">
-              <span className="number-tag">(07)</span> Gallery
-            </span>
-            <h2 className="display-2 mt-6">
+        <div className="mb-14">
+          <span className="eyebrow mb-5">
+            <span className="number-tag">(08)</span> Gallery
+          </span>
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-10 mt-6">
+            <h2 className="display-2">
               <SplitText text="A glimpse, " splitBy="word" stagger={0.06} />
               <span className="editorial text-terracotta">
                 <SplitText text="from inside." splitBy="word" stagger={0.06} delay={0.3} />
               </span>
             </h2>
+            <SectionCTA to="/gallery">See full gallery</SectionCTA>
           </div>
-          <Link to="/gallery" data-cursor="hover" className="btn-link">
-            See full gallery <span aria-hidden>→</span>
-          </Link>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">

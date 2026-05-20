@@ -48,8 +48,8 @@ export default function Contact() {
   return (
     <PageTransition>
       <SEO
-        title="Contact Nanma Estates — Begin a Conversation"
-        description="Get in touch with Nanma Estates. Visit our offices in Mumbai, Bangalore and Delhi NCR, message us on WhatsApp, or submit an enquiry."
+        title="Contact Nanma By Meeran — Begin a Conversation"
+        description="Get in touch with Nanma By Meeran. Visit our offices in Mumbai, Bangalore and Delhi NCR, message us on WhatsApp, or submit an enquiry."
         url="https://nanmaconstruct.com/contact"
       />
 
@@ -339,7 +339,7 @@ export default function Contact() {
         <div className="aspect-[16/8] md:aspect-[21/8] w-full bg-cream">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.8!2d72.8147!3d18.9929!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDU5JzM0LjQiTiA3MsKwNDgnNTMuMCJF!5e0!3m2!1sen!2sin!4v1234567890"
-            title="Nanma Estates HQ"
+            title="Nanma By Meeran HQ"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             className="w-full h-full grayscale hover:grayscale-0 transition-all duration-700"

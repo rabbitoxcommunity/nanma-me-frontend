@@ -11,7 +11,7 @@ export default function AmenitiesSection() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-16">
           <div className="md:col-span-7">
             <span className="eyebrow mb-5">
-              <span className="number-tag">(04)</span> Signature Amenities
+              <span className="number-tag">(05)</span> Signature Amenities
             </span>
             <h2 className="display-2 mt-6">
               <SplitText text="Every thoughtful detail, " splitBy="word" stagger={0.05} />

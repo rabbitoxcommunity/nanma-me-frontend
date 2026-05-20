@@ -25,6 +25,7 @@ import InquiryForm from "../components/project/InquiryForm";
 import ProjectCard from "../components/project/ProjectCard";
 import { ProjectCardSkeleton } from "../components/ui/Skeleton";
 import Skeleton from "../components/ui/Skeleton";
+import SectionCTA from "../components/ui/SectionCTA";
 import { amenityCatalog } from "../data/amenities";
 import { projectsService } from "../services/projectsService";
 
@@ -97,7 +98,7 @@ export default function ProjectDetail() {
   return (
     <PageTransition>
       <SEO
-        title={project.metaTitle || `${project.title} — ${project.location} | Nanma Estates`}
+        title={project.metaTitle || `${project.title} — ${project.location} | Nanma By Meeran`}
         description={project.metaDescription || project.description}
         url={`https://nanmaconstruct.com/projects/${project.slug}`}
         image={project.cover}
@@ -482,21 +483,19 @@ export default function ProjectDetail() {
       {related.length > 0 && (
         <section className="py-24 md:py-32">
           <div className="container-x">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
-              <div>
-                <span className="eyebrow mb-5">
-                  <span className="number-tag">(More)</span> Related projects
-                </span>
-                <h2 className="display-2 mt-6">
+            <div className="mb-14">
+              <span className="eyebrow mb-5">
+                <span className="number-tag">(More)</span> Related projects
+              </span>
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-10 mt-6">
+                <h2 className="display-2">
                   <SplitText text="You may " splitBy="word" stagger={0.06} />
                   <span className="editorial text-terracotta">
                     <SplitText text="also love." splitBy="word" stagger={0.06} delay={0.3} />
                   </span>
                 </h2>
+                <SectionCTA to="/projects">All projects</SectionCTA>
               </div>
-              <Link to="/projects" data-cursor="hover" className="btn-link">
-                All projects <span aria-hidden>→</span>
-              </Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-14">
               {related.map((p, i) => (

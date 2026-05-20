@@ -34,43 +34,30 @@ export default function Login() {
 
   return (
     <div className="admin-shell min-h-screen flex bg-[#F5F5F7]">
-      {/* Left decorative panel */}
-      <div className="hidden lg:flex flex-col justify-between w-[42%] bg-white border-r border-[rgba(26,24,21,0.07)] p-12 relative overflow-hidden shrink-0">
-        {/* Background shapes */}
-        <div className="absolute top-0 right-0 w-72 h-72 rounded-full bg-terracotta/5 -translate-y-1/3 translate-x-1/3" />
-        <div className="absolute bottom-0 left-0 w-56 h-56 rounded-full bg-terracotta/5 translate-y-1/3 -translate-x-1/3" />
+      {/* Left image panel */}
+      <div className="hidden lg:flex flex-col justify-between w-[42%] relative overflow-hidden shrink-0">
+        {/* Full-bleed background image */}
+        <img
+          src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1400&q=85"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+          draggable={false}
+        />
+        {/* Gradient overlay — dark at top & bottom, lighter in middle */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/70" />
 
         {/* Brand */}
-        <div className="relative z-10 text-graphite">
-          <Logo showTagline />
+        <div className="relative z-10 p-8">
+          <Logo showTagline markClass="h-32 w-auto" />
         </div>
 
-        {/* Illustration area */}
-        <div className="relative z-10 space-y-4">
-          {/* Mini stat cards */}
-          <div className="bg-[#F5F5F7] rounded-2xl p-5">
-            <div className="text-xs font-semibold uppercase tracking-ultrawide text-smoke mb-1">Total Projects</div>
-            <div className="text-4xl text-graphite font-semibold tracking-tight tabular">12</div>
-            <div className="flex items-center gap-1.5 mt-3">
-              <div className="flex-1 h-1.5 bg-white rounded-full overflow-hidden">
-                <div className="h-full w-3/4 bg-terracotta rounded-full" />
-              </div>
-              <span className="text-[10px] text-smoke">75%</span>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-3">
-            <div className="bg-terracotta/8 rounded-2xl p-4">
-              <div className="text-[10px] font-semibold uppercase tracking-ultrawide text-smoke mb-1">Gallery</div>
-              <div className="text-2xl text-graphite font-semibold tracking-tight tabular">48</div>
-            </div>
-            <div className="bg-emerald-50 rounded-2xl p-4">
-              <div className="text-[10px] font-semibold uppercase tracking-ultrawide text-smoke mb-1">Enquiries</div>
-              <div className="text-2xl text-graphite font-semibold tracking-tight tabular">24</div>
-            </div>
-          </div>
+        {/* Bottom quote */}
+        <div className="relative z-10 p-10">
+          <p className="text-white/90 text-lg font-medium leading-snug tracking-tight mb-3">
+            "Crafting spaces that inspire<br />and endure."
+          </p>
+          <p className="text-white/50 text-xs">Nanma By Meeran · Admin Panel</p>
         </div>
-
-        <p className="relative z-10 text-xs text-ash">Nanma Estates Admin Panel</p>
       </div>
 
       {/* Right — form */}
@@ -82,7 +69,7 @@ export default function Login() {
           className="w-full max-w-sm"
         >
           {/* Mobile brand */}
-          <div className="mb-8 lg:hidden text-graphite">
+          <div className="mb-8 lg:hidden text-smoke" style={{ filter: "grayscale(1)" }}>
             <Logo showTagline />
           </div>
 
@@ -152,7 +139,7 @@ export default function Login() {
           </form>
 
           <p className="text-center text-xs text-ash mt-8">
-            Nanma Estates · Admin Portal · {new Date().getFullYear()}
+            Nanma By Meeran · Admin Portal · {new Date().getFullYear()}
           </p>
         </motion.div>
       </div>
