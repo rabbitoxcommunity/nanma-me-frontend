@@ -24,11 +24,16 @@ import {
   PiBasketball,
   PiTennisBall,
   PiFlower,
+  PiPersonSimpleRun,
+  PiTree,
   // Entertainment
   PiFilmReel,
   PiTelevisionSimple,
   PiArmchair,
   PiMicrophoneStage,
+  PiHouseLine,
+  // Health
+  PiHeartbeat,
   // Building / lifestyle
   PiCouch,
   PiForkKnife,
@@ -44,16 +49,23 @@ import {
   PiPawPrint,
   // Spec icons
   PiBuildings,
+  PiBuilding,
+  PiColumns,
   PiCookingPot,
   PiSquaresFour,
   PiDoor,
   PiCpu,
   PiPaintBrush,
+  PiPaintRoller,
   PiPipe,
   PiLightbulb,
+  PiPlug,
   PiFireExtinguisher,
   PiSolarPanel,
   PiWindmill,
+  PiBed,
+  PiToilet,
+  PiElevator,
 } from "react-icons/pi";
 
 // ─── Amenity icons (admin-pickable) ──────────────────
@@ -76,57 +88,68 @@ export const AMENITY_ICONS = {
   spa:         { Icon: PiSparkle,             label: "Spa" },
 
   // Kids
-  kids:        { Icon: PiBaby,                label: "Children's Play Area" },
+  kids:        { Icon: PiBaby,                label: "Play Area for Children" },
 
   // Sports / outdoor
   football:    { Icon: PiSoccerBall,          label: "Football Turf" },
-  basketball:  { Icon: PiBasketball,          label: "Half Basketball Court" },
-  shuttle:     { Icon: PiTennisBall,          label: "Shuttle Court" },
-  garden:      { Icon: PiFlower,              label: "Garden / Park" },
+  basketball:  { Icon: PiBasketball,          label: "Basket Ball Court" },
+  shuttle:     { Icon: PiTennisBall,          label: "Badminton Court" },
+  jogging:     { Icon: PiPersonSimpleRun,     label: "Jogging Track" },
+  garden:      { Icon: PiTree,               label: "Landscaped Area" },
 
   // Entertainment
   cinema:      { Icon: PiFilmReel,            label: "Mini Movie Theatre" },
   cinema24:    { Icon: PiTelevisionSimple,    label: "24-Seater Mini Movie Theatre" },
   amphitheatre:{ Icon: PiArmchair,            label: "Amphitheatre" },
   stage:       { Icon: PiMicrophoneStage,     label: "Open Stage" },
+  recreationHall: { Icon: PiHouseLine,        label: "Recreation Hall" },
 
   // Lifestyle / common
-  lobby:       { Icon: PiCouch,               label: "Elegant Lobby" },
+  lobby:       { Icon: PiCouch,               label: "Furnished Lobby" },
   restaurant:  { Icon: PiForkKnife,           label: "Restaurant / Café" },
   library:     { Icon: PiBooks,               label: "Library" },
   road:        { Icon: PiPath,                label: "Paved Internal Roads" },
 
-  // Utilities
+  // Health & Utilities
+  healthClub:  { Icon: PiHeartbeat,           label: "Health Club" },
   generator:   { Icon: PiLightning,           label: "500 W Generator Backup" },
   wifi:        { Icon: PiWifiHigh,            label: "High-Speed Wi-Fi" },
-  security:    { Icon: PiShieldCheck,         label: "24×7 Security" },
+  security:    { Icon: PiShieldCheck,         label: "24x7 Surveillance" },
   parking:     { Icon: PiCar,                 label: "Parking" },
   concierge:   { Icon: PiBellRinging,         label: "Concierge Service" },
   business:    { Icon: PiBriefcase,           label: "Business Suite" },
   pet:         { Icon: PiPawPrint,            label: "Pet Park" },
 
   // ─── Legacy keys (kept so older project records keep rendering) ──
-  // Old key → mapped to closest current icon + label. Don't remove these.
   gym:         { Icon: PiBarbell,             label: "Open Gym" },
-  lounge:      { Icon: PiCouch,               label: "Elegant Lobby" },
+  lounge:      { Icon: PiCouch,               label: "Furnished Lobby" },
   power:       { Icon: PiLightning,           label: "500 W Generator Backup" },
   turf:        { Icon: PiSoccerBall,          label: "Football Turf" },
+  park:        { Icon: PiFlower,              label: "Garden / Park" },
 };
 
 // ─── Specification icons (admin-pickable) ────────────
 export const SPEC_ICONS = {
+  foundation:  { Icon: PiColumns,           label: "Foundation" },
   structure:   { Icon: PiBuildings,         label: "Structure" },
+  parking:     { Icon: PiCar,               label: "Car Parking" },
+  bedroom:     { Icon: PiBed,               label: "Bedroom" },
   kitchen:     { Icon: PiCookingPot,        label: "Kitchen" },
+  toilet:      { Icon: PiToilet,            label: "Toilet" },
+  doors:       { Icon: PiDoor,              label: "Door" },
+  electrical:  { Icon: PiPlug,              label: "Electrical Specifications" },
+  plumbing:    { Icon: PiPipe,              label: "Plumbing & Sanitary" },
+  elevator:    { Icon: PiElevator,          label: "Elevators" },
+  ceiling:     { Icon: PiPaintRoller,       label: "Ceiling Plaster" },
+  paint:       { Icon: PiPaintBrush,        label: "Paint" },
   flooring:    { Icon: PiSquaresFour,       label: "Flooring" },
-  bath:        { Icon: PiBathtub,           label: "Bathroom" },
-  doors:       { Icon: PiDoor,              label: "Doors / Windows" },
-  tech:        { Icon: PiCpu,               label: "Smart Home" },
-  paint:       { Icon: PiPaintBrush,        label: "Paint / Finish" },
-  plumbing:    { Icon: PiPipe,              label: "Plumbing" },
   lighting:    { Icon: PiLightbulb,         label: "Lighting" },
   fire:        { Icon: PiFireExtinguisher,  label: "Fire Safety" },
+  tech:        { Icon: PiCpu,               label: "Smart Home" },
   solar:       { Icon: PiSolarPanel,        label: "Solar / Energy" },
   hvac:        { Icon: PiWindmill,          label: "HVAC / Cooling" },
+  // Legacy — kept so older records keep rendering correctly
+  bath:        { Icon: PiBathtub,           label: "Bathroom" },
 };
 
 // Helpers — used by public renderers so unknown icons fall back gracefully.
