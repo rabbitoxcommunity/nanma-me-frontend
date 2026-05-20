@@ -189,22 +189,22 @@ export default function ProjectDetail() {
               dangerouslySetInnerHTML={{ __html: project.description || "" }}
             />
             {project.overview?.length > 0 && (
-              <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 border-t border-line pt-10">
+              <div className="mt-10 border-t border-l border-line grid grid-cols-2">
                 {project.overview.map((row, i) => (
                   <motion.div
                     key={row.label}
-                    initial={{ opacity: 0, y: 16 }}
+                    initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: i * 0.06 }}
-                    className="flex justify-between gap-4 border-b border-line pb-4"
+                    transition={{ duration: 0.4, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
+                    className="px-5 py-5 border-r border-b border-line group"
                   >
-                    <span className="text-xs uppercase tracking-ultrawide text-smoke shrink-0">
+                    <div className="text-xs uppercase tracking-ultrawide text-smoke mb-2">
                       {row.label}
-                    </span>
-                    <span className="text-sm text-graphite text-right font-medium">
+                    </div>
+                    <div className="font-display text-xl md:text-2xl font-medium text-graphite leading-tight group-hover:text-terracotta transition-colors duration-300">
                       {row.value}
-                    </span>
+                    </div>
                   </motion.div>
                 ))}
               </div>
