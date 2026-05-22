@@ -120,10 +120,15 @@ export default function HeroSlider() {
           <AnimatePresence mode="wait">
             <motion.div key={current} className="space-y-6 md:space-y-8 text-left">
               <TextReveal>
-                <span className="inline-flex items-center gap-3 text-xs uppercase tracking-ultrawide text-bone/80">
-                  <span className="w-8 h-px bg-terracotta" />
-                  {slides[current].label} · {slides[current].location}
-                </span>
+                <div className="inline-flex items-center gap-4">
+                  <span className="px-3 py-1 text-[10px] uppercase tracking-ultrawide bg-terracotta text-bone rounded-full">
+                    {slides[current].label}
+                  </span>
+                  <span className="flex items-center gap-2 text-[11px] uppercase tracking-ultrawide text-bone/60">
+                    <span className="w-5 h-px bg-bone/30" />
+                    {slides[current].location}
+                  </span>
+                </div>
               </TextReveal>
 
               <h1 className="font-display font-light leading-[0.92] tracking-tightest">

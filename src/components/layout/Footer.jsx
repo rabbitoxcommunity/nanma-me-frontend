@@ -121,11 +121,11 @@ export default function Footer() {
       </div>
 
       {/* Big wordmark */}
-      <div className="container-x py-10 border-t border-bone/10 overflow-hidden">
+      {/* <div className="container-x py-10 border-t border-bone/10 overflow-hidden">
         <div className="font-display text-[18vw] sm:text-[16vw] leading-none text-bone/[0.06] tracking-[0.18em] text-center select-none">
           NANMA
         </div>
-      </div>
+      </div> */}
 
       <div className="container-x pb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-3 text-xs text-bone/40">
         <span>© {new Date().getFullYear()} Nanma Properties Pvt. Ltd. All rights reserved.</span>
