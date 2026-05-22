@@ -6,40 +6,6 @@ import BlurText from "../../animations/BlurText";
 import TextReveal from "../../animations/TextReveal";
 import { projectsApi } from "../../admin/api/endpoints";
 
-// Hardcoded fallback slides — used while loading and when no banner-flagged
-// projects exist in the CMS.
-const FALLBACK_SLIDES = [
-  {
-    img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=2200&q=85",
-    label: "Now Selling",
-    location: "Marine Drive, Mumbai",
-    title: "Azure Skyline",
-    sub: "Residences",
-    tagline:
-      "A small portfolio of architecturally significant homes — designed, built, and delivered by us alone.",
-    slug: "azure-skyline-residences",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=2200&q=85",
-    label: "Ready to Move In",
-    location: "Lonavala, Maharashtra",
-    title: "Verdant Villas",
-    sub: "by the Lake",
-    tagline:
-      "Forty-two private villas around a quiet lake. Restored woodland, walled gardens, and infinity pools that meet the water beyond.",
-    slug: "verdant-villas-by-the-lake",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=2200&q=85",
-    label: "Pre-Launch",
-    location: "Whitefield, Bangalore",
-    title: "The Grove",
-    sub: "Residences",
-    tagline:
-      "Twelve garden homes set within a walled four-acre estate — pre-launch enquiries now open to a small list.",
-    slug: "the-grove-residences",
-  },
-];
 
 const STATUS_LABELS = {
   ongoing: "Ongoing",
@@ -76,7 +42,7 @@ function adaptToSlide(p) {
 }
 
 export default function HeroSlider() {
-  const [slides, setSlides] = useState(FALLBACK_SLIDES);
+  const [slides, setSlides] = useState([]);
   const [current, setCurrent] = useState(0);
   const ref = useRef(null);
 
@@ -113,6 +79,12 @@ export default function HeroSlider() {
     const t = setInterval(() => setCurrent((c) => (c + 1) % slides.length), 7000);
     return () => clearInterval(t);
   }, [slides.length]);
+
+  if (!slides.length) {
+    return (
+      <section className="relative h-screen min-h-[680px] w-full bg-neutral-400" />
+    );
+  }
 
   return (
     <section ref={ref} className="relative h-screen min-h-[680px] w-full overflow-hidden">
@@ -224,20 +196,6 @@ export default function HeroSlider() {
         ))}
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-6 right-5 sm:right-8 md:right-12 lg:right-16 z-10 flex flex-col items-end gap-2 text-bone/60"
-      >
-        <span className="text-[10px] uppercase tracking-ultrawide">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          className="w-px h-8 bg-gradient-to-b from-bone/60 to-transparent"
-        />
-      </motion.div>
     </section>
   );
 }
