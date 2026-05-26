@@ -77,8 +77,7 @@ const team = [
 
 const stats = [
   { value: 14, suffix: "+", label: "Years in Practice" },
-  { value: 30, suffix: "+", label: "Years Team Experience" },
-  { value: 42, suffix: "", label: "Projects Delivered" },
+  { value: 44, suffix: "", label: "Projects Delivered" },
   { value: 98, suffix: "%", label: "Client Retention" },
 ];
 
@@ -229,7 +228,7 @@ export default function About() {
               </span>
             </h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-bone/10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-bone/2">
             {stats.map((s, i) => (
               <motion.div
                 key={s.label}
