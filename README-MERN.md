@@ -61,7 +61,7 @@ The site opens at **http://localhost:3001**.
 ```env
 REACT_APP_API_URL=http://localhost:5000
 REACT_APP_SITE_URL=http://localhost:3001
-REACT_APP_WHATSAPP=919999999999
+REACT_APP_WHATSAPP=971547566000
 PORT=3001
 ```
 

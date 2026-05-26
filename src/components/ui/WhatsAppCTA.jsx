@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaWhatsapp } from "react-icons/fa";
 
-export default function WhatsAppCTA({ phone = "919999999999", message = "Hi Nanma, I'd like to know more about your projects." }) {
+export default function WhatsAppCTA({ phone = "971547566000", message = "Hi Nanma, I'd like to know more about your projects." }) {
   const [show, setShow] = useState(false);
 
   useEffect(() => {

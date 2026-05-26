@@ -5,7 +5,7 @@ import { FiPhone, FiCheckCircle } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 import { enquiriesApi } from "../../admin/api/endpoints";
 
-const PHONE = process.env.REACT_APP_WHATSAPP || "919999999999";
+const PHONE = process.env.REACT_APP_WHATSAPP || "971547566000";
 
 export default function InquiryForm({ projectTitle = "", projectId = null }) {
   const {
