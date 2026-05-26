@@ -170,7 +170,7 @@ export default function ProjectDetail() {
           {/* Left — sticky heading so it doesn't create an empty gap with long content */}
           <div className="lg:col-span-4 lg:sticky lg:top-28">
             <span className="eyebrow mb-5">
-              <span className="number-tag">(Overview)</span> About this project
+              About this project
             </span>
             <h2 className="display-3 mt-6">
               A residence,
@@ -220,9 +220,6 @@ export default function ProjectDetail() {
           <div className="container-x">
             <div className="flex items-end justify-between mb-10 gap-6">
               <div>
-                <span className="eyebrow mb-4">
-                  <span className="number-tag">(Gallery)</span>
-                </span>
                 <h2 className="display-3 mt-4">
                   <SplitText text="Through the " splitBy="word" stagger={0.06} />
                   <span className="editorial text-terracotta">
@@ -245,7 +242,7 @@ export default function ProjectDetail() {
           <div className="container-x">
             <div className="max-w-2xl mb-12">
               <span className="eyebrow mb-4">
-                <span className="number-tag">(Amenities)</span> What's included
+               Amenities
               </span>
               <h2 className="display-3 mt-6">
                 <SplitText text="Quietly luxurious " splitBy="word" stagger={0.06} />

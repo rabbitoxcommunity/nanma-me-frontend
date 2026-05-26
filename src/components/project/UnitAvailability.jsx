@@ -75,14 +75,14 @@ export default function UnitAvailability({ inventory, projectTitle = "" }) {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 md:mb-12">
           <div>
             <span className="eyebrow mb-4">
-              <span className="number-tag">(Inventory)</span> Availability
+              Availability
             </span>
             <h2 className="display-2 mt-5">
               Find <span className="editorial text-terracotta">your home</span>.
             </h2>
-            <p className="body mt-4 max-w-md">
+            {/* <p className="body mt-4 max-w-md">
               Live inventory — sold, booked and available units across {projectTitle}. Reach out to lock yours.
-            </p>
+            </p> */}
           </div>
 
           {/* Status totals strip */}

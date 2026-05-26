@@ -46,9 +46,9 @@ export default function CompanyOverview() {
 
           {/* Right text */}
           <div className="lg:col-span-6 order-1 lg:order-2">
-            <span className="eyebrow mb-5">
+            {/* <span className="eyebrow mb-5">
               <span className="number-tag">(03)</span> Our Practice
-            </span>
+            </span> */}
             <h2 className="display-2 mt-6">
               <SplitText text="Built on the lineage " splitBy="word" stagger={0.06} />
               <br />

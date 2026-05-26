@@ -10,9 +10,9 @@ export default function AmenitiesSection() {
       <div className="container-x">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-16">
           <div className="md:col-span-7">
-            <span className="eyebrow mb-5">
+            {/* <span className="eyebrow mb-5">
               <span className="number-tag">(05)</span> Signature Amenities
-            </span>
+            </span> */}
             <h2 className="display-2 mt-6">
               <SplitText text="Every thoughtful detail, " splitBy="word" stagger={0.05} />
               <br />
@@ -21,11 +21,11 @@ export default function AmenitiesSection() {
               </span>
             </h2>
           </div>
-          <div className="md:col-span-4 md:col-start-9 self-end">
+          {/* <div className="md:col-span-4 md:col-start-9 self-end">
             <p className="body">
               From private spas to concierge services — every Nanma residence is served by amenities that feel less like inclusions, more like quiet luxuries.
             </p>
-          </div>
+          </div> */}
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-line">

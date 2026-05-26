@@ -11,7 +11,7 @@ const STATUS_LABELS = {
   ongoing: "Ongoing",
   ready: "Ready to Move In",
   completed: "Completed",
-  upcoming: "Upcoming",
+  upcoming: "New Launch",
 };
 
 const PLACEHOLDER_IMG =

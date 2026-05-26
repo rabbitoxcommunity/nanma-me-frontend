@@ -12,7 +12,7 @@ const statusOptions = [
   { value: "ongoing", label: "Ongoing" },
   { value: "ready", label: "Ready to Move In" },
   { value: "completed", label: "Completed" },
-  { value: "upcoming", label: "Upcoming" },
+  { value: "upcoming", label: "New Launch" },
 ];
 
 export default function ProjectsList() {

@@ -16,7 +16,7 @@ const navCols = {
     { label: "Ongoing", to: "/projects?status=ongoing" },
     { label: "Ready to Move In", to: "/projects?status=ready" },
     { label: "Completed", to: "/projects?status=completed" },
-    { label: "Upcoming", to: "/projects?status=upcoming" },
+    { label: "New Launch", to: "/projects?status=upcoming" },
   ],
 };
 
@@ -35,7 +35,6 @@ export default function Footer() {
       <div className="container-x py-20 md:py-32 border-b border-bone/10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
           <div className="md:col-span-8">
-            <span className="eyebrow text-bone/50">(Begin)</span>
             <h2 className="display-1 !text-bone mt-6">
               <SplitText text="Let's craft" splitBy="word" stagger={0.08} />
               <br />
@@ -102,15 +101,15 @@ export default function Footer() {
           <ul className="space-y-4 text-sm text-bone/80 mb-6">
             <li className="flex items-start gap-3">
               <FiMapPin className="w-4 h-4 mt-0.5 text-terracotta shrink-0" />
-              <span>One Park Avenue, Worli, Mumbai 400 018</span>
+              <span>Nanma Properties L.L.C. 207, L2, The Light 1, Arjan, Dubai, UAE</span>
             </li>
             <li className="flex items-center gap-3">
               <FiPhone className="w-4 h-4 text-terracotta shrink-0" />
-              <a href="tel:+919999999999" data-cursor="hover" className="hover:text-terracotta transition-colors">+91 99999 99999</a>
+              <a href="tel:+971547566000" data-cursor="hover" className="hover:text-terracotta transition-colors">+971 547566000</a>
             </li>
             <li className="flex items-center gap-3">
               <FiMail className="w-4 h-4 text-terracotta shrink-0" />
-              <a href="mailto:hello@nanmaconstruct.com" data-cursor="hover" className="hover:text-terracotta transition-colors">hello@nanmaconstruct.com</a>
+              <a href="mailto:customerdelight@nanmaconstruct.com" data-cursor="hover" className="hover:text-terracotta transition-colors">customerdelight@nanmaconstruct.com</a>
             </li>
           </ul>
           {/* <form onSubmit={(e) => e.preventDefault()} className="flex border-b border-bone/30 focus-within:border-terracotta transition-colors">
@@ -130,7 +129,7 @@ export default function Footer() {
       <div className="container-x pb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-3 text-xs text-bone/40">
         <span>© {new Date().getFullYear()} Nanma Properties Pvt. Ltd. All rights reserved.</span>
         <div className="flex flex-col md:flex-row md:items-center gap-3">
-          <span>RERA Registered · Equal Housing Opportunity</span>
+          {/* <span>RERA Registered · Equal Housing Opportunity</span> */}
           <span className="hidden md:inline text-bone/20">·</span>
           <span>
             Designed & developed by{" "}

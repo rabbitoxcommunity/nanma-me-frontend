@@ -30,9 +30,9 @@ export default function ServicesSection() {
         {/* ── Header ───────────────────────────── */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-14 md:mb-20">
           <div className="md:col-span-7">
-            <span className="eyebrow mb-5">
+            {/* <span className="eyebrow mb-5">
               <span className="number-tag">(04)</span> Services
-            </span>
+            </span> */}
             <h2 className="display-2 mt-6">
               <SplitText text="What we do, " splitBy="word" stagger={0.06} />
               <br />
@@ -41,13 +41,13 @@ export default function ServicesSection() {
               </span>
             </h2>
           </div>
-          <div className="md:col-span-4 md:col-start-9 self-end">
+          {/* <div className="md:col-span-4 md:col-start-9 self-end">
             <p className="body">
               Three practices, one philosophy. We bring the same patience and
               craft to a 200-unit tower as we do to a single villa or a stretch
               of road.
             </p>
-          </div>
+          </div> */}
         </div>
 
         {/* ── Rows ─────────────────────────────── */}

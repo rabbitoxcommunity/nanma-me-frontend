@@ -38,9 +38,9 @@ export default function GalleryPreview() {
     <section className="py-24 md:py-32">
       <div className="container-x">
         <div className="mb-14">
-          <span className="eyebrow mb-5">
+          {/* <span className="eyebrow mb-5">
             <span className="number-tag">(08)</span> Gallery
-          </span>
+          </span> */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-10 mt-6">
             <h2 className="display-2">
               <SplitText text="A glimpse, " splitBy="word" stagger={0.06} />

@@ -15,7 +15,7 @@ const STATUS_OPTIONS = [
   { value: "ongoing", label: "Ongoing" },
   { value: "ready", label: "Ready to Move In" },
   { value: "completed", label: "Completed" },
-  { value: "upcoming", label: "Upcoming" },
+  { value: "upcoming", label: "New Launch" },
 ];
 
 const PROPERTY_TYPES = [

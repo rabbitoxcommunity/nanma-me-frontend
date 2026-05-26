@@ -4,9 +4,9 @@ import SplitText from "../../animations/SplitText";
 import BlurText from "../../animations/BlurText";
 
 const items = [
-  { Icon: FiMapPin, label: "Visit", value: "One Park Avenue, Worli, Mumbai 400 018" },
-  { Icon: FiPhone, label: "Call", value: "+91 99999 99999", href: "tel:+919999999999" },
-  { Icon: FiMail, label: "Write", value: "hello@nanmaconstruct.com", href: "mailto:hello@nanmaconstruct.com" },
+  { Icon: FiMapPin, label: "Visit", value: "Nanma Properties L.L.C. 207, L2, The Light 1, Arjan, Dubai, UAE" },
+  { Icon: FiPhone, label: "Call", value: "+971 547566000", href: "tel:+971547566000" },
+  { Icon: FiMail, label: "Write", value: "customerdelight@nanmaconstruct.com", href: "mailto:customerdelight@nanmaconstruct.com" },
 ];
 
 export default function ContactPreview() {
@@ -15,8 +15,9 @@ export default function ContactPreview() {
       <div className="container-x grid grid-cols-1 lg:grid-cols-12 gap-12">
         <div className="lg:col-span-5">
           <span className="eyebrow mb-5">
-            <span className="number-tag">(09)</span> Get in Touch
+           
           </span>
+              <span className="number-tag">Get in touch</span> 
           <h2 className="display-2 mt-6">
             <SplitText text="A quiet" splitBy="word" stagger={0.06} />{" "}
             <span className="editorial text-terracotta">

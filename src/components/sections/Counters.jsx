@@ -3,9 +3,9 @@ import SplitText from "../../animations/SplitText";
 import Counter from "../../animations/Counter";
 
 const stats = [
-  { value: 18, label: "Years in Practice", suffix: "+" },
-  { value: 42, label: "Projects Delivered", suffix: "" },
-  { value: 4.2, label: "Crores Transacted", prefix: "₹", suffix: " Cr" },
+  { value: 14, label: "Years in Practice", suffix: "+" },
+  { value: 44, label: "Projects Delivered", suffix: "" },
+  // { value: 4.2, label: "Crores Transacted", prefix: "₹", suffix: " Cr" },
   { value: 98, label: "Client Retention", suffix: "%" },
 ];
 
@@ -14,10 +14,10 @@ export default function Counters() {
     <section className="py-24 md:py-32 bg-graphite text-bone overflow-hidden grain">
       <div className="container-x">
         <div className="max-w-3xl mb-16">
-          <span className="eyebrow text-bone/50 mb-5">
+          {/* <span className="eyebrow text-bone/50 mb-5">
             <span className="text-terracotta editorial italic normal-case text-base">(06)</span>
             <span className="ml-2">By the numbers</span>
-          </span>
+          </span> */}
           <h2 className="display-2 !text-bone mt-6">
             <SplitText text="Two decades, " splitBy="word" stagger={0.06} />
             <span className="editorial text-terracotta">
@@ -26,7 +26,7 @@ export default function Counters() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-bone/10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-line">
           {stats.map((s, i) => (
             <motion.div
               key={s.label}

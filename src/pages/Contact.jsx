@@ -10,8 +10,8 @@ import SEO from "../components/ui/SEO";
 import { enquiriesApi } from "../admin/api/endpoints";
 
 const offices = [
-  { city: "Kochi", line1: "", line2: "Kochi, Kerala", phone: "+91 99999 99999", email: "hello@nanmaconstruct.com" },
-  { city: "Dubai", line1: "", line2: "Dubai, UAE", phone: "+971 99999 99999", email: "dubai@nanmaconstruct.com" },
+  { city: "Kochi", line1: "", line2: "Nanma Properties Pvt. Ltd. Kunnumpuram Junction, NH 66, opp. Al Reem Restaurant, Edappally, Kochi, Kerala 682 024"},
+  { city: "Dubai", line1: "", line2: "Nanma Properties L.L.C. 207, L2, The Light 1, Arjan, Dubai, UAE",},
 ];
 
 const socials = [
@@ -56,7 +56,7 @@ export default function Contact() {
       <section className="pt-32 md:pt-44 pb-12">
         <div className="container-x">
           <span className="eyebrow mt-12">
-            <span className="number-tag">(Contact)</span> Begin a conversation
+            <span className="number-tag">Contact</span>
           </span>
           <h1 className="display-1 mt-6 max-w-[14ch] text-balance">
             <SplitText text="A quiet " splitBy="word" stagger={0.06} />
@@ -216,7 +216,7 @@ export default function Contact() {
           <div className="lg:col-span-5 space-y-6">
             {/* WhatsApp */}
             <motion.a
-              href="https://wa.me/919999999999?text=Hello%20Nanma"
+              href="https://wa.me/971547566000?text=Hello%20Nanma"
               target="_blank"
               rel="noopener noreferrer"
               data-cursor="hover"
@@ -239,12 +239,19 @@ export default function Contact() {
 
             {/* Quick details */}
             <div className="bg-cream rounded-sm p-6 md:p-7 space-y-5">
+                  <div className="flex items-start gap-4">
+                <FiMapPin className="w-5 h-5 text-terracotta shrink-0 mt-1" />
+                <div>
+                  <div className="text-xs uppercase tracking-ultrawide text-smoke">Location</div>
+                  <div className="text-graphite text-sm">Nanma Properties L.L.C. 207, L2, The Light 1, Arjan, Dubai, UAE</div>
+                </div>
+              </div>
               <div className="flex items-start gap-4">
                 <FiPhone className="w-5 h-5 text-terracotta shrink-0 mt-1" />
                 <div>
                   <div className="text-xs uppercase tracking-ultrawide text-smoke">Call</div>
-                  <a href="tel:+919999999999" data-cursor="hover" className="text-graphite hover:text-terracotta transition-colors">
-                    +91 99999 99999
+                  <a href="tel:+971547566000" data-cursor="hover" className="text-graphite hover:text-terracotta transition-colors">
+                    +971 547566000
                   </a>
                 </div>
               </div>
@@ -252,18 +259,12 @@ export default function Contact() {
                 <FiMail className="w-5 h-5 text-terracotta shrink-0 mt-1" />
                 <div>
                   <div className="text-xs uppercase tracking-ultrawide text-smoke">Email</div>
-                  <a href="mailto:hello@nanmaconstruct.com" data-cursor="hover" className="text-graphite hover:text-terracotta transition-colors">
-                    hello@nanmaconstruct.com
+                  <a href="mailto:customerdelight@nanmaconstruct.com" data-cursor="hover" className="text-graphite hover:text-terracotta transition-colors">
+                    customerdelight@nanmaconstruct.com
                   </a>
                 </div>
               </div>
-              <div className="flex items-start gap-4">
-                <FiClock className="w-5 h-5 text-terracotta shrink-0 mt-1" />
-                <div>
-                  <div className="text-xs uppercase tracking-ultrawide text-smoke">Hours</div>
-                  <div className="text-graphite text-sm">Mon – Sat · 10am to 7pm IST</div>
-                </div>
-              </div>
+          
             </div>
 
             {/* Social */}
@@ -294,7 +295,7 @@ export default function Contact() {
         <div className="container-x">
           <div className="max-w-2xl mb-12">
             <span className="eyebrow mb-4">
-              <span className="number-tag">(Offices)</span> Visit us
+              <span className="number-tag">Visit us</span>
             </span>
             <h2 className="display-2 mt-6">
               <SplitText text="Two cities. " splitBy="word" stagger={0.06} />
@@ -305,7 +306,7 @@ export default function Contact() {
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-line">
-            {offices.map((o, i) => (
+            {offices?.map((o, i) => (
               <motion.div
                 key={o.city}
                 initial={{ opacity: 0, y: 24 }}
@@ -319,14 +320,14 @@ export default function Contact() {
                 <p className="text-sm text-smoke leading-relaxed mb-4">
                   {o.line1}<br />{o.line2}
                 </p>
-                <div className="space-y-1 text-sm">
+                {/* <div className="space-y-1 text-sm">
                   <a href={`tel:${o.phone.replace(/\s/g, "")}`} data-cursor="hover" className="block text-graphite hover:text-terracotta transition-colors">
                     {o.phone}
                   </a>
                   <a href={`mailto:${o.email}`} data-cursor="hover" className="block text-graphite hover:text-terracotta transition-colors">
                     {o.email}
                   </a>
-                </div>
+                </div> */}
               </motion.div>
             ))}
           </div>

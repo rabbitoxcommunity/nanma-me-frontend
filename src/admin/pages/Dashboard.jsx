@@ -9,7 +9,7 @@ const STATUS_ROWS = [
   { key: "ongoing",   label: "Ongoing",          bar: "bg-amber-400" },
   { key: "ready",     label: "Ready to Move In", bar: "bg-emerald-400" },
   { key: "completed", label: "Completed",         bar: "bg-ash" },
-  { key: "upcoming",  label: "Upcoming",          bar: "bg-blue-400" },
+  { key: "upcoming",  label: "New Launch",        bar: "bg-blue-400" },
 ];
 
 function greeting() {
@@ -146,7 +146,7 @@ export default function Dashboard() {
           Icon={FiLayers}
           label="Total Projects"
           value={data.projects.total}
-          sublabel={`${data.projects.ongoing} ongoing · ${data.projects.upcoming} upcoming`}
+          sublabel={`${data.projects.ongoing} ongoing · ${data.projects.upcoming} new launch`}
           to="/admin/projects"
           accent="orange"
         />

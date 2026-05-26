@@ -274,7 +274,7 @@ const STATUS_CONFIG = {
   ongoing:   { dot: "bg-amber-400",   pill: "bg-amber-50 text-amber-700",     label: "Ongoing" },
   ready:     { dot: "bg-emerald-400", pill: "bg-emerald-50 text-emerald-700", label: "Ready" },
   completed: { dot: "bg-ash",         pill: "bg-cream text-smoke",            label: "Completed" },
-  upcoming:  { dot: "bg-blue-400",    pill: "bg-blue-50 text-blue-700",       label: "Upcoming" },
+  upcoming:  { dot: "bg-blue-400",    pill: "bg-blue-50 text-blue-700",       label: "New Launch" },
   new:       { dot: "bg-terracotta",  pill: "bg-terracotta/10 text-terracotta", label: "New" },
   contacted: { dot: "bg-amber-400",   pill: "bg-amber-50 text-amber-700",     label: "Contacted" },
   closed:    { dot: "bg-ash",         pill: "bg-cream text-smoke",            label: "Closed" },

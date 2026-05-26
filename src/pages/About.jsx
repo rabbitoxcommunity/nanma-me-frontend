@@ -98,9 +98,9 @@ export default function About() {
       {/* HERO */}
       <section className="pt-32 md:pt-44 pb-12">
         <div className="container-x">
-          <span className="eyebrow mt-12">
+          {/* <span className="eyebrow mt-12">
             <span className="number-tag">(About)</span> Our practice
-          </span>
+          </span> */}
           <h1 className="display-1 mt-6 max-w-[18ch] text-balance">
             <SplitText text="Built on the lineage " splitBy="word" stagger={0.06} />
             <br />
@@ -118,7 +118,7 @@ export default function About() {
           <div className="lg:col-span-7 relative aspect-[16/10] overflow-hidden rounded-sm grain">
             <motion.div style={{ y: heroY }} className="absolute inset-0 w-full h-[115%] -top-[8%]">
               <LazyImage
-                src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1800&q=85"
+                src="/about-bg.jpg"
                 alt="Nanma Properties"
                 className="w-full h-full"
               />
@@ -185,7 +185,7 @@ export default function About() {
         <div className="container-x">
           <div className="max-w-2xl mb-16">
             <span className="eyebrow mb-5">
-              <span className="number-tag">(Approach)</span> How we work
+              How we work
             </span>
             <h2 className="display-2 mt-6">
               <SplitText text="Our " splitBy="word" stagger={0.06} />
@@ -220,7 +220,6 @@ export default function About() {
         <div className="container-x">
           <div className="max-w-3xl mb-12">
             <span className="eyebrow text-bone/50 mb-5">
-              <span className="text-terracotta editorial italic normal-case text-base">(Numbers)</span>
               <span className="ml-2">Over a decade, counted carefully</span>
             </span>
             <h2 className="display-2 !text-bone mt-6">
@@ -255,7 +254,7 @@ export default function About() {
         <div className="container-x">
           <div className="max-w-2xl mb-16">
             <span className="eyebrow mb-5">
-              <span className="number-tag">(Leadership)</span> The team
+              <span className="number-tag">Leadership</span>
             </span>
             <h2 className="display-2 mt-6">
               <SplitText text="People behind " splitBy="word" stagger={0.06} />
@@ -295,7 +294,7 @@ export default function About() {
       </section>
 
       {/* TIMELINE */}
-      <section className="py-24 md:py-32">
+      {/* <section className="py-24 md:py-32">
         <div className="container-x">
           <div className="max-w-2xl mb-16">
             <span className="eyebrow mb-4">
@@ -319,13 +318,13 @@ export default function About() {
                 viewport={{ once: true, margin: "-5% 0px" }}
                 transition={{ duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
               >
-                {/* Divider */}
+  =
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-2.5 h-2.5 rounded-full bg-terracotta shrink-0" />
                   <div className="flex-1 h-px bg-line" />
                 </div>
 
-                {/* Row */}
+               
                 <div className="grid grid-cols-1 md:grid-cols-[10rem_1fr] gap-4 md:gap-12 pb-10 pl-[1.625rem]">
                   <div className="font-display text-3xl md:text-4xl text-terracotta font-light tracking-tight leading-none pt-1">
                     {item.year}
@@ -340,14 +339,14 @@ export default function About() {
               </motion.div>
             ))}
 
-            {/* Final closing line */}
+     
             <div className="flex items-center gap-4">
               <div className="w-2.5 h-2.5 rounded-full border-2 border-terracotta shrink-0" />
               <div className="flex-1 h-px bg-line" />
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* AWARDS & CERTIFICATIONS */}
       <section className="py-24 md:py-32 bg-cream hidden">

@@ -7,7 +7,7 @@ export const STATUS_LABELS = {
   ongoing: "Ongoing",
   ready: "Ready to Move In",
   completed: "Completed",
-  upcoming: "Upcoming",
+  upcoming: "New Launch",
 };
 
 export const PROJECT_STATUSES = [
@@ -15,7 +15,7 @@ export const PROJECT_STATUSES = [
   { key: "ongoing", label: "Ongoing" },
   { key: "ready", label: "Ready to Move In" },
   { key: "completed", label: "Completed" },
-  { key: "upcoming", label: "Upcoming" },
+  { key: "upcoming", label: "New Launch" },
 ];
 
 const PLACEHOLDER =
