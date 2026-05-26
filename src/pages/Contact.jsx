@@ -15,10 +15,10 @@ const offices = [
 ];
 
 const socials = [
-  { Icon: FaInstagram, href: "https://instagram.com", label: "Instagram" },
-  { Icon: FaLinkedinIn, href: "https://linkedin.com", label: "LinkedIn" },
-  { Icon: FaFacebookF, href: "https://facebook.com", label: "Facebook" },
-  { Icon: FaYoutube, href: "https://youtube.com", label: "YouTube" },
+  { Icon: FaInstagram, href: "https://www.instagram.com/nanma.me", label: "Instagram" },
+    // { Icon: FaLinkedinIn, href: "https://linkedin.com", label: "LinkedIn" },
+  { Icon: FaFacebookF, href: "https://www.facebook.com/share/18pRxnfFUg/?mibextid=wwXIfr", label: "Facebook" },
+  // { Icon: FaYoutube, href: "https://youtube.com", label: "YouTube" },
 ];
 
 export default function Contact() {

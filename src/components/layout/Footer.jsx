@@ -21,11 +21,11 @@ const navCols = {
 };
 
 const socials = [
-  { Icon: FaInstagram, href: "https://instagram.com", label: "Instagram" },
-  { Icon: FaLinkedinIn, href: "https://linkedin.com", label: "LinkedIn" },
-  { Icon: FaFacebookF, href: "https://facebook.com", label: "Facebook" },
-  { Icon: FaYoutube, href: "https://youtube.com", label: "YouTube" },
-  { Icon: FaWhatsapp, href: "https://wa.me/919999999999", label: "WhatsApp" },
+  { Icon: FaInstagram, href: "https://www.instagram.com/nanma.me", label: "Instagram" },
+  // { Icon: FaLinkedinIn, href: "https://linkedin.com", label: "LinkedIn" },
+  { Icon: FaFacebookF, href: "https://www.facebook.com/share/18pRxnfFUg/?mibextid=wwXIfr", label: "Facebook" },
+  // { Icon: FaYoutube, href: "https://youtube.com", label: "YouTube" },
+  { Icon: FaWhatsapp, href: "https://wa.me/971547566000", label: "WhatsApp" },
 ];
 
 export default function Footer() {

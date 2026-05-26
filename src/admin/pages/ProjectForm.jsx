@@ -263,7 +263,7 @@ export default function ProjectForm() {
                 label="Location *"
                 value={data.location}
                 onChange={(e) => set("location", e.target.value)}
-                placeholder="Marine Drive, Mumbai"
+                placeholder="Dubai, UAE"
                 required
               />
               <Select
@@ -468,7 +468,7 @@ export default function ProjectForm() {
               label="Keywords"
               value={data.keywords}
               onChange={(e) => set("keywords", e.target.value)}
-              placeholder="luxury apartments mumbai, sea view, marine drive"
+              placeholder="luxury apartments dubai, sea view, marine drive"
               hint="Comma-separated."
             />
           </Card>
