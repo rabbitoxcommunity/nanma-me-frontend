@@ -14,8 +14,7 @@ const STATUS_LABELS = {
   upcoming: "New Launch",
 };
 
-const PLACEHOLDER_IMG =
-  "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=2200&q=85";
+const PLACEHOLDER_IMG = "/image1.webp";
 
 // Convert a backend Project doc into the shape this slider renders
 function adaptToSlide(p) {

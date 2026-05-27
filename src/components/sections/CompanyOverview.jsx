@@ -22,7 +22,7 @@ export default function CompanyOverview() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-sm grain">
               <motion.div style={{ y: imgY }} className="absolute inset-0 w-full h-[115%] -top-[8%]">
                 <LazyImage
-                  src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1400&q=85"
+                  src="/image2.webp"
                   alt="Architectural detail"
                   className="w-full h-full"
                   imgClassName="w-full h-full object-cover"

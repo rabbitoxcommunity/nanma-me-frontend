@@ -65,7 +65,7 @@ const team = [
     name: "Asheen Panakkat",
     role: "Managing Director",
     quote: "We bring in value to our customers through our openness and vast experience in the industry.",
-    img: "/team/md.jpg",
+    img: "/team/md.png",
   },
   {
     name: "Mohamed Junaid",
@@ -117,7 +117,7 @@ export default function About() {
           <div className="lg:col-span-7 relative aspect-[16/10] overflow-hidden rounded-sm grain">
             <motion.div style={{ y: heroY }} className="absolute inset-0 w-full h-[115%] -top-[8%]">
               <LazyImage
-                src="/about-bg.jpg"
+                src="/image1.webp"
                 alt="Nanma Properties"
                 className="w-full h-full"
               />
@@ -278,7 +278,7 @@ export default function About() {
                   <img
                     src={m.img}
                     alt={m.name}
-                    className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                    className="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                   />
                 </div>
                 <h3 className="font-display text-xl md:text-2xl text-graphite font-light group-hover:text-terracotta transition-colors duration-300">

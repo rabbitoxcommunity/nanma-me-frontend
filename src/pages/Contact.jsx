@@ -55,9 +55,9 @@ export default function Contact() {
       {/* HERO */}
       <section className="pt-32 md:pt-44 pb-12">
         <div className="container-x">
-          <span className="eyebrow mt-12">
+          {/* <span className="eyebrow mt-12">
             <span className="number-tag">Contact</span>
-          </span>
+          </span> */}
           <h1 className="display-1 mt-6 max-w-[14ch] text-balance">
             <SplitText text="A quiet " splitBy="word" stagger={0.06} />
             <span className="editorial text-terracotta">
@@ -336,8 +336,8 @@ export default function Contact() {
       <section className="pb-0">
         <div className="aspect-[16/8] md:aspect-[21/8] w-full bg-cream">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.8!2d72.8147!3d18.9929!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDU5JzM0LjQiTiA3MsKwNDgnNTMuMCJF!5e0!3m2!1sen!2sin!4v1234567890"
-            title="Nanma Properties HQ"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3617.600162219114!2d55.226187499999995!3d24.9456875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f711dac0a9487%3A0xc699c0d347b95d19!2sNanma%20Lotus!5e0!3m2!1sen!2sin!4v1779868111807!5m2!1sen!2sin"
+            title="Nanma Lotus"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             className="w-full h-full grayscale hover:grayscale-0 transition-all duration-700"

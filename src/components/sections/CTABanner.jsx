@@ -12,7 +12,7 @@ export default function CTABanner() {
     <section ref={ref} className="relative h-[80vh] min-h-[520px] overflow-hidden flex items-center justify-center">
       <motion.div style={{ y: imgY }} className="absolute inset-0 w-full h-[125%] -top-[12%]">
         <img
-          src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=2200&q=85"
+          src="/image3.webp"
           alt=""
           className="w-full h-full object-cover"
         />

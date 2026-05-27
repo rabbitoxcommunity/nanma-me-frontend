@@ -127,7 +127,7 @@ export default function Footer() {
       </div> */}
 
       <div className="container-x pb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-3 text-xs text-bone/40">
-        <span>© {new Date().getFullYear()} Nanma Properties Pvt. Ltd. All rights reserved.</span>
+        <span>© {new Date().getFullYear()} Nanma Properties L.L.C. All rights reserved.</span>
         <div className="flex flex-col md:flex-row md:items-center gap-3">
           {/* <span>RERA Registered · Equal Housing Opportunity</span> */}
           <span className="hidden md:inline text-bone/20">·</span>
