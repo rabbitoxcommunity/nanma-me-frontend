@@ -41,7 +41,7 @@ export default function ContactPreview() {
                 <it.Icon className="w-7 h-7 text-terracotta shrink-0 mt-0.5" />
                 <div>
                   <div className="text-xs uppercase tracking-ultrawide text-smoke mb-1">{it.label}</div>
-                  <div className="font-display text-xl md:text-2xl text-graphite font-light leading-snug" dangerouslySetInnerHTML={{ __html: it.value }} />
+                  <div className="font-display text-base sm:text-lg md:text-2xl text-graphite font-light leading-snug break-words" dangerouslySetInnerHTML={{ __html: it.value }} />
                 </div>
               </>
             );

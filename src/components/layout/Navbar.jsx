@@ -46,7 +46,10 @@ export default function Navbar() {
   }, [open]);
 
   const dark = hasDarkHero && !scrolled;
-  const logoGrey = scrolled || !hasDarkHero;
+  // Logo goes grey when scrolled, not on a dark-hero page, OR when the
+  // mobile menu is open (menu uses the bone background, so the white-on-
+  // dark logo would disappear).
+  const logoGrey = scrolled || !hasDarkHero || open;
 
   return (
     <>
@@ -134,9 +137,12 @@ export default function Navbar() {
                 className="lg:hidden w-11 h-11 flex flex-col items-center justify-center gap-[5px]"
                 aria-label="Toggle menu"
               >
-                <motion.span animate={open ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }} className={`block w-5 h-px origin-center ${dark ? "bg-bone" : "bg-ink"}`} />
-                <motion.span animate={open ? { opacity: 0 } : { opacity: 1 }} className={`block w-5 h-px ${dark ? "bg-bone" : "bg-ink"}`} />
-                <motion.span animate={open ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }} className={`block w-5 h-px origin-center ${dark ? "bg-bone" : "bg-ink"}`} />
+                {/* When menu is open the close (X) icon sits over the bone
+                    background, so it must always be ink-black regardless of
+                    whatever the underlying hero color is. */}
+                <motion.span animate={open ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }} className={`block w-5 h-px origin-center ${open || !dark ? "bg-ink" : "bg-bone"}`} />
+                <motion.span animate={open ? { opacity: 0 } : { opacity: 1 }} className={`block w-5 h-px ${open || !dark ? "bg-ink" : "bg-bone"}`} />
+                <motion.span animate={open ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }} className={`block w-5 h-px origin-center ${open || !dark ? "bg-ink" : "bg-bone"}`} />
               </button>
             </div>
           </div>
@@ -172,10 +178,10 @@ export default function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
-              className="container-x py-8 flex justify-between items-end border-t border-line text-xs text-smoke uppercase tracking-widest"
+              className="container-x w-full text-center py-8 flex justify-center items-end border-t border-line text-xs text-smoke uppercase tracking-widest"
             >
               <span>Dubai · Kochi</span>
-              <a href="tel:+971547566000">+971 547566000</a>
+              {/* <a href="tel:+971547566000">+971 547566000</a> */}
             </motion.div>
           </motion.div>
         )}

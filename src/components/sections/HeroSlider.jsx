@@ -87,7 +87,7 @@ export default function HeroSlider() {
   }
 
   return (
-    <section ref={ref} className="relative h-screen min-h-[680px] w-full overflow-hidden">
+    <section ref={ref} className="relative h-[78vh] min-h-[540px] md:h-screen md:min-h-[680px] w-full overflow-hidden">
       {/* Slides */}
       {slides.map((slide, i) => (
         <motion.div
@@ -114,18 +114,24 @@ export default function HeroSlider() {
       {/* Content — pinned to bottom, aligned via container-x like every other page */}
       <motion.div
         style={{ y: contentY, opacity }}
-        className="absolute inset-x-0 bottom-0 z-10 pb-16 md:pb-24 text-bone"
+        // Mobile: full-height flex column so content sits vertically centered.
+        // Desktop: revert to original — absolutely pinned to bottom, no flex
+        // (md:block cancels the flex column so content flows naturally and
+        // stays left-aligned via the inner container-x + text-left).
+        className="absolute inset-0 z-10 flex flex-col justify-center text-bone md:block md:inset-x-0 md:inset-y-auto md:bottom-0 md:pb-24"
       >
         <div className="container-x">
           <AnimatePresence mode="wait">
-            <motion.div key={current} className="space-y-6 md:space-y-8 text-left">
+            <motion.div key={current} className="space-y-4 md:space-y-8 text-left">
               <TextReveal>
-                <div className="inline-flex items-center gap-4">
+                {/* Stack vertically on mobile, inline on tablet+ */}
+                <div className="flex flex-col items-start gap-2.5 md:inline-flex md:flex-row md:items-center md:gap-4">
                   <span className="px-3 py-1 text-[10px] uppercase tracking-ultrawide bg-terracotta text-bone rounded-full">
                     {slides[current].label}
                   </span>
                   <span className="flex items-center gap-2 text-[11px] uppercase tracking-ultrawide text-bone/60">
-                    <span className="w-5 h-px bg-bone/30" />
+                    {/* Hide the dash on mobile — looks odd as the first thing in a stacked column */}
+                    <span className="hidden md:block w-5 h-px bg-bone/30" />
                     {slides[current].location}
                   </span>
                 </div>
@@ -139,7 +145,7 @@ export default function HeroSlider() {
                     delay={0.1}
                     stagger={0.1}
                     duration={1}
-                    className="text-4xl xs:text-7xl md:text-8xl lg:text-[7rem] block"
+                    className="text-[2.6rem] leading-[1] xs:text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] block"
                   />
                 </div>
                 <div className="overflow-hidden">
@@ -149,19 +155,26 @@ export default function HeroSlider() {
                     delay={0.3}
                     stagger={0.1}
                     duration={1}
-                    className="text-4xl xs:text-7xl md:text-8xl lg:text-[7rem] block editorial italic text-terracotta"
+                    className="text-[2.6rem] leading-[1] xs:text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] block editorial italic text-terracotta"
                   />
                 </div>
               </h1>
 
               {slides[current].tagline && (
                 <div className="max-w-xl">
-                  <BlurText
-                    text={slides[current].tagline}
-                    delay={0.6}
-                    duration={1.2}
-                    className="text-base md:text-lg text-bone/80"
-                  />
+                  {/* Mobile — plain p with 2-line clamp + ellipsis.
+                      Desktop — animated BlurText, full text. */}
+                  <p className="md:hidden text-base text-bone/80 line-clamp-2">
+                    {slides[current].tagline}
+                  </p>
+                  <div className="hidden md:block">
+                    <BlurText
+                      text={slides[current].tagline}
+                      delay={0.6}
+                      duration={1.2}
+                      className="text-base md:text-lg text-bone/80"
+                    />
+                  </div>
                 </div>
               )}
 
@@ -169,14 +182,14 @@ export default function HeroSlider() {
                 <Link
                   to={`/projects/${slides[current].slug}`}
                   data-cursor="hover"
-                  className="inline-flex items-center gap-3 px-7 py-4 bg-bone text-graphite text-sm rounded-full hover:bg-terracotta hover:text-bone transition-all duration-500 ease-out-expo hover:gap-4"
+                  className="inline-flex items-center gap-2.5 md:gap-3 px-5 md:px-7 py-3 md:py-4 bg-bone text-graphite text-xs md:text-sm rounded-full hover:bg-terracotta hover:text-bone transition-all duration-500 ease-out-expo hover:gap-4"
                 >
                   Explore Project <span aria-hidden>→</span>
                 </Link>
                 <Link
                   to="/projects"
                   data-cursor="hover"
-                  className="inline-flex items-center gap-3 px-7 py-4 border border-bone/30 text-bone text-sm rounded-full hover:bg-bone hover:text-graphite transition-all duration-500"
+                  className="inline-flex items-center gap-2.5 md:gap-3 px-5 md:px-7 py-3 md:py-4 border border-bone/30 text-bone text-xs md:text-sm rounded-full hover:bg-bone hover:text-graphite transition-all duration-500"
                 >
                   All Projects
                 </Link>
