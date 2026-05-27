@@ -216,7 +216,7 @@ export default function Contact() {
           <div className="lg:col-span-5 space-y-6">
             {/* WhatsApp */}
             <motion.a
-              href="https://wa.me/971547566000?text=Hello%20Nanma"
+              href="https://wa.me/971547566000?text=Hi Nanma, I'd like to know more about your projects."
               target="_blank"
               rel="noopener noreferrer"
               data-cursor="hover"
