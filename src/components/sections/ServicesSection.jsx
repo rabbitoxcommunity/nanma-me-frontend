@@ -67,10 +67,7 @@ export default function ServicesSection() {
 
               {/* Row content */}
               <div className="relative grid grid-cols-12 gap-4 md:gap-8 items-baseline py-8 md:py-12 px-1">
-                {/* Index */}
-                <span className="col-span-12 md:col-span-1 font-editorial italic text-terracotta text-lg md:text-xl leading-none">
-                  ({n})
-                </span>
+              
 
                 {/* Title — sized down so "Infrastructure" fits its column */}
                 <h3 className="col-span-12 md:col-span-6 font-display text-4xl md:text-5xl lg:text-6xl font-light tracking-tightest leading-[0.95] uppercase text-graphite group-hover:text-bone transition-colors duration-700 -mt-2 md:mt-0">

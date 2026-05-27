@@ -170,7 +170,7 @@ export default function About() {
                 className="bg-cream p-10 md:p-14 lg:p-16 group hover:bg-pearl transition-colors duration-500"
               >
                 <b.Icon className="w-12 h-12 text-terracotta mb-8 group-hover:scale-110 transition-transform duration-500" />
-                <span className="number-tag block mb-3">({b.eyebrow})</span>
+                <span className="number-tag block mb-3">{b.eyebrow}</span>
                 <h3 className="display-3 text-graphite mb-5">{b.title}</h3>
                 <p className="body">{b.desc}</p>
               </motion.div>
@@ -352,7 +352,7 @@ export default function About() {
         <div className="container-x">
           <div className="max-w-2xl mb-16">
             <span className="eyebrow mb-5">
-              <span className="number-tag">(Recognition)</span> Awards &amp; Certifications
+              <span className="number-tag">Awards &amp; Certifications</span>
             </span>
             <h2 className="display-2 mt-6">
               <SplitText text="Certified for " splitBy="word" stagger={0.06} />

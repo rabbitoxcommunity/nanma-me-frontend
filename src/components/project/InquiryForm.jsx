@@ -103,8 +103,7 @@ export default function InquiryForm({ projectTitle = "", projectId = null }) {
       {/* Header */}
       <div className="px-6 pt-6 pb-5 border-b border-line">
         <h3 className="font-display text-xl text-graphite leading-tight">
-          Request the{" "}
-          <span className="editorial text-terracotta">memorandum</span>
+          <span className="editorial text-terracotta">Enquiry</span>
         </h3>
         <p className="text-smoke text-xs mt-1.5 leading-relaxed">
           Floor plans, pricing and a private viewing — sent the same day.
@@ -155,7 +154,7 @@ export default function InquiryForm({ projectTitle = "", projectId = null }) {
           <Field
             label="Phone"
             type="tel"
-            placeholder="+91 98765 43210"
+            placeholder="+971 "
             error={errors.phone?.message}
             register={register("phone", {
               required: "Phone is required",

@@ -290,7 +290,7 @@ export default function ProjectDetail() {
           <div className="container-x">
             <div className="max-w-2xl mb-12">
               <span className="eyebrow mb-4">
-                <span className="number-tag">(Specifications)</span>
+                <span className="number-tag">Specifications</span>
               </span>
               <h2 className="display-3 mt-6">
                 <SplitText text="Crafted to " splitBy="word" stagger={0.06} />
@@ -310,7 +310,7 @@ export default function ProjectDetail() {
           <div className="container-x">
             <div className="max-w-2xl mb-12">
               <span className="eyebrow mb-4">
-                <span className="number-tag">(Film)</span> Walkthrough
+                <span className="number-tag">Walkthrough</span> 
               </span>
               <h2 className="display-3 mt-6">
                 <SplitText text="A cinematic " splitBy="word" stagger={0.06} />
@@ -331,7 +331,7 @@ export default function ProjectDetail() {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-14">
             <div>
               <span className="eyebrow mb-4">
-                <span className="number-tag">(Location)</span> Where we are
+                <span className="number-tag">Location</span>
               </span>
               <h2 className="display-2 mt-5">
                 Connected to <br />
@@ -438,7 +438,7 @@ export default function ProjectDetail() {
           <div className="container-x">
             <div className="mb-14">
               <span className="eyebrow mb-5">
-                <span className="number-tag">(More)</span> Related projects
+                <span className="number-tag">Related projects</span> 
               </span>
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-10 mt-6">
                 <h2 className="display-2">

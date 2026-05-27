@@ -10,8 +10,8 @@ import SEO from "../components/ui/SEO";
 import { enquiriesApi } from "../admin/api/endpoints";
 
 const offices = [
-  { city: "Kochi", line1: "", line2: "Nanma Properties Pvt. Ltd. Kunnumpuram Junction, NH 66, opp. Al Reem Restaurant, Edappally, Kochi, Kerala 682 024"},
-  { city: "Dubai", line1: "", line2: "Nanma Properties L.L.C. 207, L2, The Light 1, Arjan, Dubai, UAE",},
+  { city: "Kochi",  address: `Nanma Properties Pvt. Ltd. <br/> Kunnumpuram Junction, NH 66, <br/> opp. Al Reem Restaurant, Edappally, Kochi, Kerala 682 024` },
+  { city: "Dubai",  address: `Nanma Properties L.L.C. <br />207, L2, The Light 1, <br />Arjan, Dubai, UAE` },
 ];
 
 const socials = [
@@ -243,7 +243,7 @@ export default function Contact() {
                 <FiMapPin className="w-5 h-5 text-terracotta shrink-0 mt-1" />
                 <div>
                   <div className="text-xs uppercase tracking-ultrawide text-smoke">Location</div>
-                  <div className="text-graphite text-sm">Nanma Properties L.L.C. 207, L2, The Light 1, Arjan, Dubai, UAE</div>
+                  <div className="text-graphite text-sm">Nanma Properties L.L.C. <br />207, L2, The Light 1, <br />Arjan, Dubai, UAE</div>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -317,9 +317,7 @@ export default function Contact() {
               >
                 <FiMapPin className="w-7 h-7 text-terracotta mb-5" />
                 <h3 className="font-display text-2xl md:text-3xl text-graphite mb-3">{o.city}</h3>
-                <p className="text-sm text-smoke leading-relaxed mb-4">
-                  {o.line1}<br />{o.line2}
-                </p>
+                <p className="text-md text-smoke leading-relaxed mb-4" dangerouslySetInnerHTML={{ __html: o.address }} />
                 {/* <div className="space-y-1 text-sm">
                   <a href={`tel:${o.phone.replace(/\s/g, "")}`} data-cursor="hover" className="block text-graphite hover:text-terracotta transition-colors">
                     {o.phone}

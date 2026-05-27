@@ -50,7 +50,7 @@ export default function FeaturedProjects() {
       <div className="container-x">
         <div className="mb-14">
           <span className="eyebrow mb-5">
-            <span className="number-tag">(02)</span> Featured Projects
+            <span className="number-tag">Featured Projects</span> 
           </span>
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-10 mt-6">
             <h2 className="display-2">

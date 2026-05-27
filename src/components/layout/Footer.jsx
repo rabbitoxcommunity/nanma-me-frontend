@@ -101,7 +101,7 @@ export default function Footer() {
           <ul className="space-y-4 text-sm text-bone/80 mb-6">
             <li className="flex items-start gap-3">
               <FiMapPin className="w-4 h-4 mt-0.5 text-terracotta shrink-0" />
-              <span>Nanma Properties L.L.C. 207, L2, The Light 1, Arjan, Dubai, UAE</span>
+              <span>Nanma Properties L.L.C. <br />207, L2, The Light 1, <br />Arjan, Dubai, UAE</span>
             </li>
             <li className="flex items-center gap-3">
               <FiPhone className="w-4 h-4 text-terracotta shrink-0" />

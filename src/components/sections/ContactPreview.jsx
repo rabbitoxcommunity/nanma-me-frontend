@@ -4,7 +4,7 @@ import SplitText from "../../animations/SplitText";
 import BlurText from "../../animations/BlurText";
 
 const items = [
-  { Icon: FiMapPin, label: "Visit", value: "Nanma Properties L.L.C. 207, L2, The Light 1, Arjan, Dubai, UAE" },
+  { Icon: FiMapPin, label: "Visit", value: `Nanma Properties L.L.C. <br />207, L2, The Light 1, <br />Arjan, Dubai, UAE` },
   { Icon: FiPhone, label: "Call", value: "+971 547566000", href: "tel:+971547566000" },
   { Icon: FiMail, label: "Write", value: "customerdelight@nanmaconstruct.com", href: "mailto:customerdelight@nanmaconstruct.com" },
 ];
@@ -41,9 +41,7 @@ export default function ContactPreview() {
                 <it.Icon className="w-7 h-7 text-terracotta shrink-0 mt-0.5" />
                 <div>
                   <div className="text-xs uppercase tracking-ultrawide text-smoke mb-1">{it.label}</div>
-                  <div className="font-display text-xl md:text-2xl text-graphite font-light leading-snug">
-                    {it.value}
-                  </div>
+                  <div className="font-display text-xl md:text-2xl text-graphite font-light leading-snug" dangerouslySetInnerHTML={{ __html: it.value }} />
                 </div>
               </>
             );

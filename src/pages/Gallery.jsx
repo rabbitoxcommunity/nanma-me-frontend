@@ -72,7 +72,7 @@ export default function Gallery() {
       <section className="pt-32 md:pt-44 pb-12">
         <div className="container-x">
           <span className="eyebrow mt-12">
-            <span className="number-tag">(Gallery)</span> Our work
+            <span className="number-tag">Gallery</span>
           </span>
           <h1 className="display-1 mt-6 max-w-[14ch] text-balance">
             <SplitText text="Built with " splitBy="word" stagger={0.06} />
