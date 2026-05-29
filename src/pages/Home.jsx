@@ -25,7 +25,7 @@ export default function Home() {
       <ServicesSection />
       <AmenitiesSection />
       <Counters />
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
       <GalleryPreview />
       <CTABanner />
       <ContactPreview />

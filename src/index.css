@@ -120,8 +120,12 @@
      Targets the HTML produced by react-quill (h2, h3, p, ul, ol, blockquote, a). */
   .prose-project {
     @apply text-smoke leading-relaxed;
+    /* Wrap only at natural word boundaries. Long unbreakable strings
+       (e.g. URLs) still wrap thanks to overflow-wrap, but normal words
+       stay intact — `word-break: break-word` was causing mid-word breaks. */
     overflow-wrap: break-word;
-    word-break: break-word;
+    word-break: normal;
+    hyphens: none;
   }
   .prose-project p { @apply mb-4; }
   .prose-project h2 {

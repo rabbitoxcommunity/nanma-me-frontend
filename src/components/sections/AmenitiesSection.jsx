@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import SplitText from "../../animations/SplitText";
 import { amenityCatalog } from "../../data/amenities";
 
-const featured = ["pool", "gym", "yoga", "garden", "concierge", "security", "lounge", "parking"];
+const featured = ["pool", "gym", "yoga", "garden", "security", "lounge", "parking"];
 
 export default function AmenitiesSection() {
   return (

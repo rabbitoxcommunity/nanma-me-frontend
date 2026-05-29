@@ -15,12 +15,12 @@ const SERVICES = [
     description:
       "Apartments, villas, and bespoke residences across India's most coveted addresses — every home crafted to endure.",
   },
-  {
-    n: "03",
-    title: "Infrastructure",
-    description:
-      "Roads, civil works, and large-scale infrastructure — engineered with the same quiet conviction we bring to private homes.",
-  },
+  // {
+  //   n: "03",
+  //   title: "Infrastructure",
+  //   description:
+  //     "Roads, civil works, and large-scale infrastructure — engineered with the same quiet conviction we bring to private homes.",
+  // },
 ];
 
 export default function ServicesSection() {

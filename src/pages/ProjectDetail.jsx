@@ -186,8 +186,15 @@ export default function ProjectDetail() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-5% 0px" }}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-              className="prose-project body-lg break-words"
-              dangerouslySetInnerHTML={{ __html: project.description || "" }}
+              className=" "
+              // Strip <br> tags so text wraps naturally. Hard line breaks
+              // (often inherited from PDF copy-paste) were chopping words
+              // mid-character. Paragraph spacing is preserved via <p> tags.
+              dangerouslySetInnerHTML={{
+                __html: (project.description || "")
+                  .replace(/<br\s*\/?>/gi, " ")
+                  .replace(/[ \t]+/g, " "),
+              }}
             />
             {project.overview?.length > 0 && (
               <div className="mt-10 border-t border-l border-line grid grid-cols-2">
