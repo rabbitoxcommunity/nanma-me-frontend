@@ -330,7 +330,7 @@ export default function ProjectForm() {
                 label="Price From"
                 value={data.priceFrom}
                 onChange={(e) => set("priceFrom", e.target.value)}
-                placeholder="₹ 8.5 Cr onwards"
+                placeholder="AED 3.2M onwards"
               />
               <Input
                 label="Handover"

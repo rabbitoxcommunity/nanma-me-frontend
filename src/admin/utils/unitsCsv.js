@@ -126,10 +126,10 @@ export function downloadCsv(filename, csvText) {
 }
 
 export const SAMPLE_UNITS_CSV = `unitNumber,tower,floor,type,carpetArea,builtupArea,price,facing,view,status
-A-301,A,3,3 BHK,1840 sq.ft,2200 sq.ft,₹ 8.5 Cr,East,Sea,available
-A-302,A,3,3 BHK,1840 sq.ft,2200 sq.ft,₹ 8.5 Cr,West,Park,booked
-A-303,A,3,3 BHK,1840 sq.ft,2200 sq.ft,₹ 8.5 Cr,North,City,sold
-B-501,B,5,4 BHK,2800 sq.ft,3400 sq.ft,₹ 14 Cr,East,Sea,available
+A-301,A,3,3 BHK,1840 sq.ft,2200 sq.ft,AED 3.2M,East,Sea,available
+A-302,A,3,3 BHK,1840 sq.ft,2200 sq.ft,AED 3.2M,West,Park,booked
+A-303,A,3,3 BHK,1840 sq.ft,2200 sq.ft,AED 3.2M,North,City,sold
+B-501,B,5,4 BHK,2800 sq.ft,3400 sq.ft,AED 5.5M,East,Sea,available
 `;
 
 export { UNIT_FIELDS };
