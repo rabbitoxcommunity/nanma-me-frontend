@@ -187,7 +187,16 @@ export default function ProjectDetail() {
               viewport={{ once: true, margin: "-5% 0px" }}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               className="prose-project body-lg break-words"
-              dangerouslySetInnerHTML={{ __html: project.description || "" }}
+              // Strip non-breaking spaces and <br> tags that prevent natural
+              // line wrap (legacy data — new saves are sanitized in the
+              // admin RichTextEditor, but old projects still have them).
+              dangerouslySetInnerHTML={{
+                __html: (project.description || "")
+                  .replace(/&nbsp;/g, " ")
+                  .replace(/ /g, " ")
+                  .replace(/<br\s*\/?>/gi, " ")
+                  .replace(/ {2,}/g, " "),
+              }}
             />
             {project.overview?.length > 0 && (
               <div className="mt-10 border-t border-l border-line grid grid-cols-2">
