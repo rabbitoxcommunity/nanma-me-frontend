@@ -70,7 +70,7 @@ export default function Contact() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mt-10">
             <div className="md:col-span-6 md:col-start-7">
               <BlurText
-                text="Tell us a little about what you're looking for. We respond personally, within 24 hours, and never share your details."
+                text="Contact us through any platform, share what you're looking for, and we'll respond personally — within 24 hours.Begin a Conversation"
                 className="body-lg"
                 delay={0.5}
               />
@@ -112,7 +112,7 @@ export default function Contact() {
                 className="bg-cream rounded-sm p-8 md:p-12 space-y-6"
               >
                 <div>
-                  <span className="number-tag block mb-2">(Enquiry Form)</span>
+                  <span className="number-tag block mb-2">Enquiry Form</span>
                   <h2 className="font-display text-2xl md:text-3xl text-graphite">
                     Send us a message
                   </h2>
