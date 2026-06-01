@@ -41,7 +41,7 @@ export default function GalleryPreview() {
           {/* <span className="eyebrow mb-5">
             <span className="number-tag">(08)</span> Gallery
           </span> */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-10 mt-6">
+          <div className="flex flex-col items-start md:flex-row md:items-center justify-between gap-6 md:gap-10 mt-6">
             <h2 className="display-2">
               <SplitText text="A glimpse, " splitBy="word" stagger={0.06} />
               <span className="editorial text-terracotta">

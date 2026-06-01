@@ -65,7 +65,7 @@ const team = [
     name: "Asheen Panakkat",
     role: "Managing Director",
     quote: "We bring in value to our customers through our openness and vast experience in the industry.",
-    img: "/team/md.webp",
+    img: "/team/md.jpg",
   },
   {
     name: "Mohamed Junaid",

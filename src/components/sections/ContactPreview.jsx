@@ -25,7 +25,7 @@ export default function ContactPreview() {
             </span>
           </h2>
           <BlurText
-            text="Visit our atelier, share what you're looking for, and we'll respond personally — within 24 hours."
+            text="Contact us through any platform, share what you're looking for, and we'll respond personally — within 24 hours."
             className="body-lg block mt-8 max-w-md"
             delay={0.5}
           />

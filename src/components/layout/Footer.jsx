@@ -96,7 +96,7 @@ export default function Footer() {
           </div>
         ))}
 
-        <div className="md:col-span-4">
+        <div className="col-span-2 md:col-span-4">
           <div className="text-xs uppercase tracking-ultrawide text-bone/40 mb-5">Reach Us</div>
           <ul className="space-y-4 text-sm text-bone/80 mb-6">
             <li className="flex items-start gap-3">

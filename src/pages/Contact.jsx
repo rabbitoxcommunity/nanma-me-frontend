@@ -10,8 +10,11 @@ import SEO from "../components/ui/SEO";
 import { enquiriesApi } from "../admin/api/endpoints";
 
 const offices = [
-  { city: "Kochi",  address: `Nanma Properties Pvt. Ltd. <br/> Kunnumpuram Junction, NH 66, <br/> opp. Al Reem Restaurant, Edappally, Kochi, Kerala 682 024` },
   { city: "Dubai",  address: `Nanma Properties L.L.C. <br />207, L2, The Light 1, <br />Arjan, Dubai, UAE` },
+    { city: "Kochi",  address: `NANMA PROPERTIES PVT LTD <br/>
+Group Meeran HQ Building<br/>
+NH Byepass, Edapally<br/>
+Ernakulam - 682024` },
 ];
 
 const socials = [
@@ -298,7 +301,7 @@ export default function Contact() {
               <span className="number-tag">Visit us</span>
             </span>
             <h2 className="display-2 mt-6">
-              <SplitText text="Two cities. " splitBy="word" stagger={0.06} />
+              <SplitText text="Two Nations. " splitBy="word" stagger={0.06} />
               <br />
               <span className="editorial text-terracotta">
                 <SplitText text="One philosophy." splitBy="word" stagger={0.06} delay={0.3} />
