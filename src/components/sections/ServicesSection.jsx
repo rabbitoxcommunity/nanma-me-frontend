@@ -13,7 +13,7 @@ const SERVICES = [
     n: "02",
     title: "Housing",
     description:
-      "Apartments, villas, and bespoke residences across India's most coveted addresses — every home crafted to endure.",
+      "Apartments, villas, and bespoke residences across middle east's most coveted addresses — every home crafted to endure.",
   },
   // {
   //   n: "03",

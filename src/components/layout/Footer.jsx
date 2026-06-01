@@ -62,7 +62,7 @@ export default function Footer() {
             <Logo showTagline taglineClass="text-bone/50" markClass="w-[150px] h-[140px] object-contain"  className="w-15 h-15" />
           </div>
           <p className="text-bone/60 text-sm max-w-xs leading-relaxed mb-6">
-            Crafted living, built to endure. Limited-edition residential projects across India's most coveted addresses.
+            Crafted living, built to endure. Limited-edition residential projects across middle east's most coveted addresses.
           </p>
           <div className="flex gap-3">
             {socials.map(({ Icon, href, label }) => (
