@@ -38,7 +38,11 @@ export default function Navbar() {
 
   useEffect(() => {
     setOpen(false);
-    window.scrollTo({ top: 0 });
+    try {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    } catch {
+      window.scrollTo(0, 0);
+    }
   }, [location.pathname]);
 
   useEffect(() => {
