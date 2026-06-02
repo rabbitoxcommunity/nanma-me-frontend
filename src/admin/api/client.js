@@ -1,10 +1,9 @@
 import axios from "axios";
 
-export const API_URL = process.env.REACT_APP_API_URL || "https://nanmame.com/api/";
+// export const API_URL = process.env.REACT_APP_API_URL || "https://nanmame.com/api/";
 
 const client = axios.create({
-  baseURL: API_URL,
-  withCredentials: false,
+ baseURL: "/api",
 });
 
 // Attach JWT
